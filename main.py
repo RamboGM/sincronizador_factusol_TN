@@ -5,6 +5,7 @@ import threading
 import os
 import subprocess
 import configparser
+import webbrowser
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 from dotenv import load_dotenv
@@ -26,12 +27,14 @@ def main():
     root = tk.Tk()
     root.title("Sincronizador Tienda Nube")
 
+    root.iconbitmap(r"C:\Users\Windows\Documents\sincronizador-factusol - copia\icon.ico")
+
     # Configurar la fuente Montserrat
     montserrat = ("Montserrat", 10)
     
     # Variables para almacenar las rutas de los archivos seleccionados
-    db_path = tk.StringVar()
-    csv_path = tk.StringVar()
+    db_path = tk.StringVar(value="")  # Valor predeterminado en blanco
+    csv_path = tk.StringVar(value="")  # Valor predeterminado en blanco
 
     # Función para seleccionar la base de datos de Factusol
     def seleccionar_db():
@@ -49,6 +52,17 @@ def main():
         )
         if path:
             csv_path.set(path)
+
+    # Función para guardar la configuración en config.txt
+    def guardar_configuracion():
+        config_path = "C:\\Users\\Windows\\Documents\\sincronizador-factusol - copia\\scripts\\config.txt"
+        try:
+            with open(config_path, "w") as config_file:
+                config_file.write(f"db_path={db_path.get()}\n")
+                config_file.write(f"csv_path={csv_path.get()}\n")
+            log("Configuración guardada correctamente.")
+        except Exception as e:
+            log(f"Error al guardar la configuración: {e}")
 
     # Funciones para manejar la sincronización
     def sincronizacion_manual():
@@ -142,11 +156,16 @@ def main():
     def activar_sincronizacion_automatica():
         hora = hora_sincronizacion.get()
         if hora:
-            scheduler.add_job(sincronizacion_manual, CronTrigger.from_crontab(f"{hora} * * *"))
-            scheduler.start()
-            log(f"Sincronización automática programada a las {hora}:00 horas.")
+            try:
+                # Dividir la hora en HH y MM
+                hh, mm = hora.split(":")
+                scheduler.add_job(sincronizacion_manual, CronTrigger(hour=hh, minute=mm))
+                scheduler.start()
+                log(f"Sincronización automática programada a las {hora}.")
+            except Exception as e:
+                log(f"Error al programar la sincronización automática: {e}")
         else:
-            log("Por favor, seleccione una hora para la sincronización automática.")
+            log("Por favor, seleccione una hora válida (HH:MM) para la sincronización automática.")
 
     def cancelar_sincronizacion_automatica():
         scheduler.remove_all_jobs()
@@ -161,47 +180,59 @@ def main():
 
     # Botones para seleccionar archivos y directorios
     db_button = ttk.Button(main_frame, text="Seleccionar Base de Datos", command=seleccionar_db, style='TButton')
-    db_button.grid(row=0, column=0, pady=10)
+    db_button.grid(row=0, column=0, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
     csv_button = ttk.Button(main_frame, text="Seleccionar Directorio CSV", command=seleccionar_directorio_csv, style='TButton')
-    csv_button.grid(row=0, column=1, pady=10)
+    csv_button.grid(row=0, column=2, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
-    # Mostrar la ruta seleccionada para la base de datos y los CSV
-    db_label = ttk.Label(main_frame, textvariable=db_path, font=montserrat)
-    db_label.grid(row=1, column=0, pady=5, columnspan=2)
+    # Mostrar la ruta seleccionada para la base de datos y los CSV con un borde blanco y etiquetas
+    db_label_frame = ttk.LabelFrame(main_frame, text="Ruta de la Base de Datos")
+    db_label_frame.grid(row=1, column=0, pady=5, padx=10, columnspan=4, sticky=tk.W+tk.E)
+    db_label = ttk.Label(db_label_frame, textvariable=db_path, font=montserrat, background="white", relief="solid", padding=5, width=60, anchor='w')
+    db_label.grid(row=0, column=0, sticky=tk.W+tk.E)
 
-    csv_label = ttk.Label(main_frame, textvariable=csv_path, font=montserrat)
-    csv_label.grid(row=2, column=0, pady=5, columnspan=2)
+    csv_label_frame = ttk.LabelFrame(main_frame, text="Carpeta para archivos CSV")
+    csv_label_frame.grid(row=2, column=0, pady=5, padx=10, columnspan=4, sticky=tk.W+tk.E)
+    csv_label = ttk.Label(csv_label_frame, textvariable=csv_path, font=montserrat, background="white", relief="solid", padding=5, width=60, anchor='w')
+    csv_label.grid(row=0, column=0, sticky=tk.W+tk.E)
+
+    # Botón para guardar la configuración
+    save_button = ttk.Button(main_frame, text="Guardar Configuración", command=guardar_configuracion, style='TButton')
+    save_button.grid(row=3, column=0, columnspan=4, pady=10, sticky=tk.W+tk.E)
 
     # Botones de sincronización y cancelación
     sync_button = ttk.Button(main_frame, text="Sincronizar Ahora", command=iniciar_sincronizacion, style='TButton')
-    sync_button.grid(row=3, column=0, pady=10)
+    sync_button.grid(row=4, column=0, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
     cancel_button = ttk.Button(main_frame, text="Cancelar", command=cancelar_sincronizacion, style='TButton')
-    cancel_button.grid(row=3, column=1, pady=10)
+    cancel_button.grid(row=4, column=2, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
     # Sección de sincronización automática
-    ttk.Label(main_frame, text="Configuración de sincronización automática", font=("Montserrat", 12, "bold")).grid(row=4, column=0, columnspan=2, pady=10)
+    ttk.Label(main_frame, text="Configuración de sincronización automática", font=("Montserrat", 12, "bold")).grid(row=5, column=0, columnspan=4, pady=10)
 
-    ttk.Label(main_frame, text="Hora de sincronización (24h):", font=montserrat).grid(row=5, column=0, pady=5, sticky=tk.W)
+    ttk.Label(main_frame, text="Hora de sincronización (HH:MM):", font=montserrat).grid(row=6, column=0, pady=5, sticky=tk.W)
     hora_sincronizacion = tk.StringVar()
-    hora_entry = ttk.Entry(main_frame, textvariable=hora_sincronizacion, width=5, font=montserrat)
-    hora_entry.grid(row=5, column=1, pady=5, sticky=tk.W)
+    hora_entry = ttk.Entry(main_frame, textvariable=hora_sincronizacion, width=8, font=montserrat)
+    hora_entry.grid(row=6, column=1, pady=5, sticky=tk.W)
 
     activar_sync_button = ttk.Button(main_frame, text="Activar Sincronización", command=activar_sincronizacion_automatica, style='TButton')
-    activar_sync_button.grid(row=6, column=0, pady=10)
+    activar_sync_button.grid(row=7, column=0, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
     cancelar_sync_button = ttk.Button(main_frame, text="Cancelar Sincronización", command=cancelar_sincronizacion_automatica, style='TButton')
-    cancelar_sync_button.grid(row=6, column=1, pady=10)
+    cancelar_sync_button.grid(row=7, column=2, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
     # Log
     global log_text
-    log_text = tk.Text(main_frame, wrap='word', height=15, width=80, font=montserrat)
-    log_text.grid(row=7, column=0, columnspan=3, pady=10)
+    log_text = tk.Text(main_frame, wrap='word', height=15, width=80, font=montserrat, borderwidth=2, relief="solid")
+    log_text.grid(row=8, column=0, columnspan=4, pady=10, sticky=tk.W+tk.E)
 
-    # Pie de página
-    footer = ttk.Label(root, text="Desarrollado por Tienda Pocket", font=("Montserrat", 10))
+    # Pie de página con enlace
+    def abrir_enlace(event):
+        webbrowser.open_new("https://tiendapocket.com/")
+    
+    footer = tk.Label(root, text="Desarrollado por Tienda Pocket", font=("Montserrat", 10), fg="blue", cursor="hand2")
     footer.grid(row=1, column=0, pady=10)
+    footer.bind("<Button-1>", abrir_enlace)
 
     # Ajustar la distribución de filas y columnas
     root.grid_rowconfigure(0, weight=1)
@@ -213,13 +244,16 @@ def main():
     # Aplicar estilo a los botones
     style = ttk.Style()
     style.configure('TButton', font=montserrat, padding=6, relief="flat")
-    style.map('TButton', foreground=[('pressed', 'white'), ('active', 'white')], background=[('pressed', '#007ACC'), ('active', '#007ACC')])
+    style.map('TButton', foreground=[('pressed', 'white'), ('active', '#01304f')], background=[('pressed', '#007ACC'), ('active', '#007ACC')])
 
     # Ejecutar la interfaz
     root.mainloop()
 
 if __name__ == "__main__":
     main()
+
+
+
 
 
 
