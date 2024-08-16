@@ -9,6 +9,9 @@ import webbrowser
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 from dotenv import load_dotenv
+from scripts.sincronizador import procesar_csv_a_json, sincronizar_productos  # Importa las funciones unificadas
+import logging
+import time
 
 # Cargar variables de entorno desde el archivo .env
 dotenv_path = os.path.join(os.path.dirname(__file__), 'scripts', '.env')
@@ -22,7 +25,52 @@ log_text = None
 running_thread = None
 stop_event = threading.Event()  # Evento para detener el hilo
 
+config_path = os.path.join(os.path.dirname(__file__), 'scripts', 'config.txt')
+
+# Manejador personalizado de logging para redirigir la salida a la interfaz
+class TextHandler(logging.Handler):
+    def __init__(self, text_widget):
+        super().__init__()
+        self.text_widget = text_widget
+
+    def emit(self, record):
+        msg = self.format(record)
+        self.text_widget.insert(tk.END, msg + "\n")
+        self.text_widget.see(tk.END)  # Desplaza automáticamente hacia el final
+        self.text_widget.update_idletasks()  # Forzar actualización en la interfaz
+
+def leer_configuracion():
+    config = configparser.ConfigParser()
+
+    # Verificar si el archivo tiene una sección válida, sino, inicializarlo
+    if not os.path.exists(config_path) or '[DEFAULT]' not in open(config_path).read():
+        with open(config_path, 'w') as config_file:
+            config_file.write('[DEFAULT]\n')
+            config_file.write('db_path=\n')
+            config_file.write('csv_path=\n')
+            config_file.write('hora_sincronizacion=\n')
+
+    config.read(config_path)
+    return config
+
+def guardar_hora_sincronizacion(hora):
+    config = leer_configuracion()
+    config['DEFAULT']['hora_sincronizacion'] = hora
+    with open(config_path, 'w') as config_file:
+        config.write(config_file)
+
+def obtener_hora_sincronizacion_guardada():
+    config = leer_configuracion()
+    return config['DEFAULT'].get('hora_sincronizacion', '')
+
 def main():
+    # Configurar logging
+    global log_text
+    logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+
+    # Leer la hora de sincronización guardada
+    hora_guardada = obtener_hora_sincronizacion_guardada()
+
     # Crear la interfaz gráfica
     root = tk.Tk()
     root.title("Sincronizador Tienda Nube")
@@ -31,7 +79,11 @@ def main():
 
     # Configurar la fuente Montserrat
     montserrat = ("Montserrat", 10)
-    
+
+    title_font = ("Montserrat", 16, "bold")
+    title_label = tk.Label(root, text="Sincronizador Factusol | Tienda Nube", font=title_font, fg="#01304f")
+    title_label.grid(row=0, column=0, pady=20, columnspan=3)
+
     # Variables para almacenar las rutas de los archivos seleccionados
     db_path = tk.StringVar(value="")  # Valor predeterminado en blanco
     csv_path = tk.StringVar(value="")  # Valor predeterminado en blanco
@@ -55,14 +107,12 @@ def main():
 
     # Función para guardar la configuración en config.txt
     def guardar_configuracion():
-        config_path = "C:\\Users\\Windows\\Documents\\sincronizador-factusol - copia\\scripts\\config.txt"
-        try:
-            with open(config_path, "w") as config_file:
-                config_file.write(f"db_path={db_path.get()}\n")
-                config_file.write(f"csv_path={csv_path.get()}\n")
-            log("Configuración guardada correctamente.")
-        except Exception as e:
-            log(f"Error al guardar la configuración: {e}")
+        config = leer_configuracion()
+        config['DEFAULT']['db_path'] = db_path.get()
+        config['DEFAULT']['csv_path'] = csv_path.get()
+        with open(config_path, 'w') as config_file:
+            config.write(config_file)
+        log("Configuración guardada correctamente.")
 
     # Funciones para manejar la sincronización
     def sincronizacion_manual():
@@ -72,25 +122,26 @@ def main():
             if stop_event.is_set():
                 log("Sincronización cancelada antes de comenzar.")
                 return
+            # Ejecutar exportación a CSV
             run_script(os.path.abspath(os.path.join('scripts', 'export_to_csv.py')), [db_path.get(), csv_path.get()])
-            
+
             if stop_event.is_set():
                 log("Sincronización cancelada después de exportar CSV.")
                 return
-            run_script(os.path.abspath(os.path.join('scripts', 'conversor_json.py')), [
+
+            # Procesar los CSV y sincronizar con Tienda Nube directamente
+            csv_files = [
                 os.path.join(csv_path.get(), "F_ART.csv"),
                 os.path.join(csv_path.get(), "F_LTA.csv"),
                 os.path.join(csv_path.get(), "F_STO.csv"),
                 os.path.join(csv_path.get(), "F_ARC.csv"),
                 os.path.join(csv_path.get(), "F_STC.csv"),
                 os.path.join(csv_path.get(), "F_LTC.csv")
-            ])
-            
-            if stop_event.is_set():
-                log("Sincronización cancelada después de generar JSON.")
-                return
-            # Pasar el archivo JSON generado a carga_tn.py
-            run_script(os.path.abspath(os.path.join('scripts', 'carga_tn.py')), ['productos.json'])
+            ]
+
+            productos_nuevos = procesar_csv_a_json(csv_files)
+            sincronizar_productos(productos_nuevos, log_func=log)
+
             log("Sincronización manual completada.")
         except Exception as e:
             log(f"Error en sincronización manual: {e}")
@@ -102,8 +153,8 @@ def main():
         try:
             log(f"Ejecutando script: {script_name} con argumentos: {args}")
             process = subprocess.Popen(
-                ["python", script_name] + args, 
-                stdout=subprocess.PIPE, 
+                ["python", script_name] + args,
+                stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True
             )
@@ -134,6 +185,7 @@ def main():
         if log_text:
             log_text.insert(tk.END, message + "\n")
             log_text.see(tk.END)
+            log_text.update_idletasks()  # Forzar actualización en la interfaz
         print(message)
 
     def iniciar_sincronizacion():
@@ -157,7 +209,7 @@ def main():
         hora = hora_sincronizacion.get()
         if hora:
             try:
-                # Dividir la hora en HH y MM
+                guardar_hora_sincronizacion(hora)  # Guardar la hora en el archivo de configuración
                 hh, mm = hora.split(":")
                 scheduler.add_job(sincronizacion_manual, CronTrigger(hour=hh, minute=mm))
                 scheduler.start()
@@ -176,7 +228,7 @@ def main():
 
     # Frame principal
     main_frame = ttk.Frame(root, padding="10")
-    main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+    main_frame.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
     # Botones para seleccionar archivos y directorios
     db_button = ttk.Button(main_frame, text="Seleccionar Base de Datos", command=seleccionar_db, style='TButton')
@@ -210,28 +262,36 @@ def main():
     # Sección de sincronización automática
     ttk.Label(main_frame, text="Configuración de sincronización automática", font=("Montserrat", 12, "bold")).grid(row=5, column=0, columnspan=4, pady=10)
 
-    ttk.Label(main_frame, text="Hora de sincronización (HH:MM):", font=montserrat).grid(row=6, column=0, pady=5, sticky=tk.W)
-    hora_sincronizacion = tk.StringVar()
-    hora_entry = ttk.Entry(main_frame, textvariable=hora_sincronizacion, width=8, font=montserrat)
-    hora_entry.grid(row=6, column=1, pady=5, sticky=tk.W)
+    # Centrar la hora de sincronización y el cuadro de entrada
+    hora_frame = ttk.Frame(main_frame)
+    hora_frame.grid(row=6, column=0, columnspan=4, pady=5)
+
+    ttk.Label(hora_frame, text="Hora de sincronización (HH:MM):", font=montserrat).grid(row=0, column=0, pady=5, padx=(0, 10), sticky=tk.E)
+    hora_sincronizacion = tk.StringVar(value=hora_guardada)
+    hora_entry = ttk.Entry(hora_frame, textvariable=hora_sincronizacion, width=8, font=montserrat)
+    hora_entry.grid(row=0, column=1, pady=5, sticky=tk.W)
 
     activar_sync_button = ttk.Button(main_frame, text="Activar Sincronización", command=activar_sincronizacion_automatica, style='TButton')
-    activar_sync_button.grid(row=7, column=0, pady=10, columnspan=2, sticky=tk.W+tk.E)
+    activar_sync_button.grid(row=7, column=0, pady=10, columnspan=2, sticky=tk.EW)
 
     cancelar_sync_button = ttk.Button(main_frame, text="Cancelar Sincronización", command=cancelar_sincronizacion_automatica, style='TButton')
-    cancelar_sync_button.grid(row=7, column=2, pady=10, columnspan=2, sticky=tk.W+tk.E)
+    cancelar_sync_button.grid(row=7, column=2, pady=10, columnspan=2, sticky=tk.EW)
 
     # Log
     global log_text
     log_text = tk.Text(main_frame, wrap='word', height=15, width=80, font=montserrat, borderwidth=2, relief="solid")
     log_text.grid(row=8, column=0, columnspan=4, pady=10, sticky=tk.W+tk.E)
 
+    # Configurar el manejador personalizado para mostrar logs en la interfaz
+    text_handler = TextHandler(log_text)
+    logging.getLogger().addHandler(text_handler)
+
     # Pie de página con enlace
     def abrir_enlace(event):
         webbrowser.open_new("https://tiendapocket.com/")
-    
+
     footer = tk.Label(root, text="Desarrollado por Tienda Pocket", font=("Montserrat", 10), fg="blue", cursor="hand2")
-    footer.grid(row=1, column=0, pady=10)
+    footer.grid(row=2, column=0, pady=10)
     footer.bind("<Button-1>", abrir_enlace)
 
     # Ajustar la distribución de filas y columnas
@@ -251,6 +311,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 
 
 
