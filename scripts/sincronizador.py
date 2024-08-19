@@ -159,7 +159,7 @@ def actualizar_producto(producto_id, producto_data, variantes_existentes):
     else:
         logging.error(f"Error al actualizar producto {producto_id}: {response.status_code} {response.text}")
 
-def crear_producto(producto_data):
+def crear_producto(producto_data, log_func=None):
     global productos_creados
 
     headers = {
@@ -172,15 +172,25 @@ def crear_producto(producto_data):
     manejar_rate_limit(response.headers)
 
     if response.status_code == 201:
-        logging.info("Producto creado correctamente.")
-        productos_creados += 1  # Incrementa el contador solo si se crea con éxito.
+        # Solo si la creación es exitosa incrementamos el contador
+        if log_func:
+            log_func("Producto creado correctamente.")
+        productos_creados += 1  # Incrementa solo si el producto se crea con éxito
     else:
-        error_message = response.json()
-        logging.error(f"Error al crear producto: {response.status_code} {response.text}")
+        # Controla cualquier otro tipo de error
+        try:
+            error_message = response.json()
+        except json.JSONDecodeError:
+            error_message = {"error": "No se pudo decodificar la respuesta del servidor."}
 
-        # Si el error es específico del stock negativo, puedes manejarlo de manera especial.
-        if response.status_code == 422 and "variants[0].stock" in error_message:
-            logging.warning(f"Producto no creado debido a stock negativo: {producto_data.get('sku')}")
+        if response.status_code == 422:
+            if log_func:
+                log_func(f"Error 422: Producto no creado debido a un problema en los datos (posiblemente stock negativo).")
+        else:
+            if log_func:
+                log_func(f"Error {response.status_code}: {response.text}")
+
+    return response.status_code
 
 def eliminar_producto(producto_id):
     global productos_eliminados
@@ -276,13 +286,14 @@ def procesar_csv_a_json(csv_files):
     
     return productos
 
-def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None):
+def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None, stop_event=None):
     global productos_creados, productos_actualizados, productos_eliminados
     productos_creados = 0
     productos_actualizados = 0
     productos_eliminados = 0
 
     productos_existentes = obtener_productos_existentes()
+
     productos_existentes_dict = {}
     total_productos_procesados = 0
     total_productos = len(productos_nuevos)
@@ -302,6 +313,10 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None):
 
     productos_nuevos_dict = {}
     for i, producto in enumerate(productos_nuevos):
+        if stop_event and stop_event.is_set():  # Verificación de cancelación
+            log_func("Sincronización cancelada.")
+            return  # Salir inmediatamente si se solicita la cancelación
+
         total_productos_procesados += 1
 
         if "variants" in producto:
@@ -322,15 +337,23 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None):
                         if log_func:
                             log_func(f"El producto SKU: {sku} ya está actualizado.")
                     else:
+                        if stop_event and stop_event.is_set():  # Verificación de cancelación
+                            log_func("Sincronización cancelada.")
+                            return  # Salir inmediatamente si se solicita la cancelación
                         if log_func:
                             log_func(f"Actualizando producto SKU: {sku}")
                         actualizar_producto(producto_existente["id"], producto, producto_existente["variants"])
                         productos_actualizados += 1
                 else:
+                    if stop_event and stop_event.is_set():  # Verificación de cancelación
+                        log_func("Sincronización cancelada.")
+                        return  # Salir inmediatamente si se solicita la cancelación
                     if log_func:
                         log_func(f"Creando nuevo producto SKU: {sku}")
-                    # Verificamos el éxito de la creación antes de incrementar el contador
-                    crear_producto(producto)
+                    # Llamada a la función `crear_producto` y verificación del estado
+                    status_code = crear_producto(producto)
+                    if status_code == 201:  # Solo incrementa si se creó correctamente
+                        productos_creados += 1
 
         # Actualizar barra de progreso
         if progress_bar:
@@ -339,6 +362,9 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None):
 
     productos_eliminados_list = []
     for sku, producto_existente in productos_existentes_dict.items():
+        if stop_event and stop_event.is_set():  # Verificación de cancelación
+            log_func("Sincronización cancelada.")
+            return  # Salir inmediatamente si se solicita la cancelación
         if sku not in productos_nuevos_dict:
             if log_func:
                 log_func(f"Eliminando producto con SKU: {sku} que ya no está en el JSON.")
@@ -346,7 +372,7 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None):
             productos_eliminados_list.append(sku)
             productos_eliminados += 1
 
-    # Asegurarse de que el resumen final se loguee correctamente
+    # Forzar que los logs se muestren correctamente
     if log_func:
         log_func(f"\n--- Resumen de Sincronización ---")
         log_func(f"Productos creados: {productos_creados}")
@@ -354,6 +380,9 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None):
         log_func(f"Productos eliminados: {productos_eliminados}")
         log_func(f"Total productos procesados: {total_productos_procesados}")
         log_func(f"---------------------------------\n")
+
+        # Log final de la sincronización completada
+        log_func("Sincronización manual completada.")
 
 
 if __name__ == "__main__":

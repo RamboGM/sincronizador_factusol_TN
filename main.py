@@ -11,7 +11,6 @@ from apscheduler.triggers.cron import CronTrigger
 from dotenv import load_dotenv
 from scripts.sincronizador import procesar_csv_a_json, sincronizar_productos  # Importa las funciones unificadas
 import logging
-import time
 
 # Cargar variables de entorno desde el archivo .env
 dotenv_path = os.path.join(os.path.dirname(__file__), 'scripts', '.env')
@@ -28,16 +27,59 @@ stop_event = threading.Event()  # Evento para detener el hilo
 config_path = os.path.join(os.path.dirname(__file__), 'scripts', 'config.txt')
 
 # Manejador personalizado de logging para redirigir la salida a la interfaz
+# Clase TextHandler actualizada
 class TextHandler(logging.Handler):
     def __init__(self, text_widget):
         super().__init__()
         self.text_widget = text_widget
+        self.search_results = []
+        self.current_match_index = 0
 
     def emit(self, record):
-        msg = self.format(record)
-        self.text_widget.insert(tk.END, msg + "\n")
-        self.text_widget.see(tk.END)  # Desplaza automáticamente hacia el final
-        self.text_widget.update_idletasks()  # Forzar actualización en la interfaz
+        try:
+            msg = self.format(record)
+            self.text_widget.config(state=tk.NORMAL)
+            self.text_widget.insert(tk.END, msg + "\n")
+            self.text_widget.see(tk.END)
+            self.text_widget.config(state=tk.DISABLED)
+        except Exception as e:
+            print(f"Error al emitir log: {e}")
+
+    def buscar_en_logs(self, search_term):
+        self.text_widget.tag_remove("current_highlight", "1.0", tk.END)
+        self.search_results.clear()
+
+        if search_term:
+            start_pos = "1.0"
+            while True:
+                start_pos = self.text_widget.search(search_term, start_pos, stopindex=tk.END)
+                if not start_pos:
+                    break
+                end_pos = f"{start_pos}+{len(search_term)}c"
+                self.search_results.append((start_pos, end_pos))
+                start_pos = end_pos
+
+            if self.search_results:
+                self.current_match_index = 0
+                self.mostrar_coincidencia()
+
+    def mostrar_coincidencia(self):
+        if self.search_results:
+            self.text_widget.tag_remove("current_highlight", "1.0", tk.END)
+            current_pos, end_pos = self.search_results[self.current_match_index]
+            self.text_widget.tag_add("current_highlight", current_pos, end_pos)
+            self.text_widget.tag_config("current_highlight", background="orange", foreground="black")
+            self.text_widget.see(current_pos)
+
+    def siguiente_coincidencia(self):
+        if self.search_results:
+            self.current_match_index = (self.current_match_index + 1) % len(self.search_results)
+            self.mostrar_coincidencia()
+
+    def anterior_coincidencia(self):
+        if self.search_results:
+            self.current_match_index = (self.current_match_index - 1) % len(self.search_results)
+            self.mostrar_coincidencia()
 
 def leer_configuracion():
     config = configparser.ConfigParser()
@@ -122,6 +164,7 @@ def main():
             if stop_event.is_set():
                 log("Sincronización cancelada antes de comenzar.")
                 return
+
             # Ejecutar exportación a CSV
             run_script(os.path.abspath(os.path.join('scripts', 'export_to_csv.py')), [db_path.get(), csv_path.get()])
 
@@ -140,14 +183,14 @@ def main():
             ]
 
             productos_nuevos = procesar_csv_a_json(csv_files)
-            sincronizar_productos(productos_nuevos, log_func=log)
+            sincronizar_productos(productos_nuevos, log_func=log, stop_event=stop_event)  # Asegúrate de pasar log_func y stop_event
 
-            log("Sincronización manual completada.")
         except Exception as e:
             log(f"Error en sincronización manual: {e}")
         finally:
             running_thread = None
             stop_event.clear()
+
 
     def run_script(script_name, args=[]):
         try:
@@ -183,10 +226,13 @@ def main():
 
     def log(message):
         if log_text:
+            log_text.config(state=tk.NORMAL)
+            # Insertar el mensaje directamente sin prefijo
             log_text.insert(tk.END, message + "\n")
             log_text.see(tk.END)
-            log_text.update_idletasks()  # Forzar actualización en la interfaz
-        print(message)
+            log_text.config(state=tk.DISABLED)
+        # Solo imprimir en la consola si se necesita para depuración
+        print(f"{message}")  # Mantenemos la impresión en consola si lo deseas
 
     def iniciar_sincronizacion():
         global running_thread
@@ -282,16 +328,38 @@ def main():
     log_text = tk.Text(main_frame, wrap='word', height=15, width=80, font=montserrat, borderwidth=2, relief="solid")
     log_text.grid(row=8, column=0, columnspan=4, pady=10, sticky=tk.W+tk.E)
 
-    # Configurar el manejador personalizado para mostrar logs en la interfaz
+    # Sección de búsqueda
+    buscar_frame = ttk.Frame(root)
+    buscar_frame.grid(row=9, column=0, pady=10, sticky=tk.EW)
+
+    ttk.Label(buscar_frame, text="Buscar SKU o palabra:", font=montserrat).grid(row=0, column=0, padx=(10, 5))
+
+    buscar_entry = ttk.Entry(buscar_frame, font=montserrat)
+    buscar_entry.grid(row=0, column=1, padx=(0, 10))
+
+    buscar_button = ttk.Button(buscar_frame, text="Buscar", style='TButton')
+    buscar_button.grid(row=0, column=2, padx=(0, 10))
+
+    anterior_button = ttk.Button(buscar_frame, text="Anterior", style='TButton')
+    anterior_button.grid(row=0, column=3, padx=(0, 10))
+
+    siguiente_button = ttk.Button(buscar_frame, text="Siguiente", style='TButton')
+    siguiente_button.grid(row=0, column=4, padx=(0, 10))
+
+    # Configurar el manejador personalizado para mostrar logs en la interfaz y buscar
     text_handler = TextHandler(log_text)
     logging.getLogger().addHandler(text_handler)
+
+    buscar_button.config(command=lambda: text_handler.buscar_en_logs(buscar_entry.get()))
+    anterior_button.config(command=text_handler.anterior_coincidencia)
+    siguiente_button.config(command=text_handler.siguiente_coincidencia)
 
     # Pie de página con enlace
     def abrir_enlace(event):
         webbrowser.open_new("https://tiendapocket.com/")
 
     footer = tk.Label(root, text="Desarrollado por Tienda Pocket", font=("Montserrat", 10), fg="blue", cursor="hand2")
-    footer.grid(row=2, column=0, pady=10)
+    footer.grid(row=10, column=0, pady=10)
     footer.bind("<Button-1>", abrir_enlace)
 
     # Ajustar la distribución de filas y columnas
@@ -311,35 +379,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
