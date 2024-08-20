@@ -3,13 +3,12 @@ from tkinter import filedialog, messagebox
 from tkinter import ttk
 import threading
 import os
-import subprocess
 import configparser
 import webbrowser
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 from dotenv import load_dotenv
-from scripts.sincronizador import procesar_csv_a_json, sincronizar_productos  # Importa las funciones unificadas
+from scripts.sincronizador import procesar_csv_a_json, sincronizar_productos, exportar_a_csv
 import logging
 
 # Cargar variables de entorno desde el archivo .env
@@ -117,7 +116,7 @@ def main():
     root = tk.Tk()
     root.title("Sincronizador Tienda Nube")
 
-    root.iconbitmap(r"C:\Users\Windows\Documents\sincronizador-factusol - copia\icon.ico")
+    root.iconbitmap(os.path.join(os.path.dirname(__file__), "icon.ico"))
 
     # Configurar la fuente Montserrat
     montserrat = ("Montserrat", 10)
@@ -166,7 +165,7 @@ def main():
                 return
 
             # Ejecutar exportación a CSV
-            run_script(os.path.abspath(os.path.join('scripts', 'export_to_csv.py')), [db_path.get(), csv_path.get()])
+            exportar_a_csv(db_path.get(), csv_path.get(), send_to_gui=log)
 
             if stop_event.is_set():
                 log("Sincronización cancelada después de exportar CSV.")
@@ -191,48 +190,13 @@ def main():
             running_thread = None
             stop_event.clear()
 
-
-    def run_script(script_name, args=[]):
-        try:
-            log(f"Ejecutando script: {script_name} con argumentos: {args}")
-            process = subprocess.Popen(
-                ["python", script_name] + args,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True
-            )
-            while process.poll() is None:
-                stdout_line = process.stdout.readline()
-                stderr_line = process.stderr.readline()
-                if stdout_line:
-                    log(f"STDOUT: {stdout_line.strip()}")
-                if stderr_line:
-                    log(f"STDERR: {stderr_line.strip()}")
-                if stop_event.is_set():
-                    process.terminate()
-                    log("Proceso terminado por solicitud de cancelación.")
-                    break
-
-            stdout, stderr = process.communicate()
-            if stdout:
-                log(f"STDOUT: {stdout.strip()}")
-            if stderr:
-                log(f"STDERR: {stderr.strip()}")
-            rc = process.poll()
-            if rc != 0 and not stop_event.is_set():
-                log(f"Error al ejecutar {script_name}: Código de retorno {rc}")
-        except Exception as e:
-            log(f"Error al ejecutar {script_name}: {e}")
-
     def log(message):
         if log_text:
             log_text.config(state=tk.NORMAL)
-            # Insertar el mensaje directamente sin prefijo
             log_text.insert(tk.END, message + "\n")
             log_text.see(tk.END)
             log_text.config(state=tk.DISABLED)
-        # Solo imprimir en la consola si se necesita para depuración
-        print(f"{message}")  # Mantenemos la impresión en consola si lo deseas
+        print(f"{message}")
 
     def iniciar_sincronizacion():
         global running_thread
@@ -269,21 +233,16 @@ def main():
         scheduler.remove_all_jobs()
         log("Sincronización automática cancelada.")
 
-    # Configurar el tamaño mínimo de la ventana para asegurar que el pie de página sea visible
     root.minsize(600, 600)
-
-    # Frame principal
     main_frame = ttk.Frame(root, padding="10")
     main_frame.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
-    # Botones para seleccionar archivos y directorios
     db_button = ttk.Button(main_frame, text="Seleccionar Base de Datos", command=seleccionar_db, style='TButton')
     db_button.grid(row=0, column=0, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
     csv_button = ttk.Button(main_frame, text="Seleccionar Directorio CSV", command=seleccionar_directorio_csv, style='TButton')
     csv_button.grid(row=0, column=2, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
-    # Mostrar la ruta seleccionada para la base de datos y los CSV con un borde blanco y etiquetas
     db_label_frame = ttk.LabelFrame(main_frame, text="Ruta de la Base de Datos")
     db_label_frame.grid(row=1, column=0, pady=5, padx=10, columnspan=4, sticky=tk.W+tk.E)
     db_label = ttk.Label(db_label_frame, textvariable=db_path, font=montserrat, background="white", relief="solid", padding=5, width=60, anchor='w')
@@ -294,21 +253,17 @@ def main():
     csv_label = ttk.Label(csv_label_frame, textvariable=csv_path, font=montserrat, background="white", relief="solid", padding=5, width=60, anchor='w')
     csv_label.grid(row=0, column=0, sticky=tk.W+tk.E)
 
-    # Botón para guardar la configuración
     save_button = ttk.Button(main_frame, text="Guardar Configuración", command=guardar_configuracion, style='TButton')
     save_button.grid(row=3, column=0, columnspan=4, pady=10, sticky=tk.W+tk.E)
 
-    # Botones de sincronización y cancelación
     sync_button = ttk.Button(main_frame, text="Sincronizar Ahora", command=iniciar_sincronizacion, style='TButton')
     sync_button.grid(row=4, column=0, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
     cancel_button = ttk.Button(main_frame, text="Cancelar", command=cancelar_sincronizacion, style='TButton')
     cancel_button.grid(row=4, column=2, pady=10, columnspan=2, sticky=tk.W+tk.E)
 
-    # Sección de sincronización automática
     ttk.Label(main_frame, text="Configuración de sincronización automática", font=("Montserrat", 12, "bold")).grid(row=5, column=0, columnspan=4, pady=10)
 
-    # Centrar la hora de sincronización y el cuadro de entrada
     hora_frame = ttk.Frame(main_frame)
     hora_frame.grid(row=6, column=0, columnspan=4, pady=5)
 
@@ -323,12 +278,10 @@ def main():
     cancelar_sync_button = ttk.Button(main_frame, text="Cancelar Sincronización", command=cancelar_sincronizacion_automatica, style='TButton')
     cancelar_sync_button.grid(row=7, column=2, pady=10, columnspan=2, sticky=tk.EW)
 
-    # Log
     global log_text
     log_text = tk.Text(main_frame, wrap='word', height=15, width=80, font=montserrat, borderwidth=2, relief="solid")
     log_text.grid(row=8, column=0, columnspan=4, pady=10, sticky=tk.W+tk.E)
 
-    # Sección de búsqueda
     buscar_frame = ttk.Frame(root)
     buscar_frame.grid(row=9, column=0, pady=10, sticky=tk.EW)
 
@@ -346,7 +299,6 @@ def main():
     siguiente_button = ttk.Button(buscar_frame, text="Siguiente", style='TButton')
     siguiente_button.grid(row=0, column=4, padx=(0, 10))
 
-    # Configurar el manejador personalizado para mostrar logs en la interfaz y buscar
     text_handler = TextHandler(log_text)
     logging.getLogger().addHandler(text_handler)
 
@@ -354,7 +306,6 @@ def main():
     anterior_button.config(command=text_handler.anterior_coincidencia)
     siguiente_button.config(command=text_handler.siguiente_coincidencia)
 
-    # Pie de página con enlace
     def abrir_enlace(event):
         webbrowser.open_new("https://tiendapocket.com/")
 
@@ -362,19 +313,14 @@ def main():
     footer.grid(row=10, column=0, pady=10)
     footer.bind("<Button-1>", abrir_enlace)
 
-    # Ajustar la distribución de filas y columnas
     root.grid_rowconfigure(0, weight=1)
     root.grid_columnconfigure(0, weight=1)
-
-    # Mantener el pie de página siempre visible
     root.grid_rowconfigure(1, weight=0)
 
-    # Aplicar estilo a los botones
     style = ttk.Style()
     style.configure('TButton', font=montserrat, padding=6, relief="flat")
     style.map('TButton', foreground=[('pressed', 'white'), ('active', '#01304f')], background=[('pressed', '#007ACC'), ('active', '#007ACC')])
 
-    # Ejecutar la interfaz
     root.mainloop()
 
 if __name__ == "__main__":
