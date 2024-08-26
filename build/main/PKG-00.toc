@@ -1,5 +1,5 @@
-('C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
- 'copia\\build\\main\\SincronizadorTiendaNube.pkg',
+('C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+ 'Simples\\sincronizador_factusol_TN\\build\\main\\main.pkg',
  {'BINARY': True,
   'DATA': True,
   'EXECUTABLE': True,
@@ -11,55 +11,56 @@
   'SYMLINK': False},
  [('pyi-contents-directory _internal', '', 'OPTION'),
   ('PYZ-00.pyz',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\build\\main\\PYZ-00.pyz',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\build\\main\\PYZ-00.pyz',
    'PYZ'),
   ('struct',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\build\\main\\localpycs\\struct.pyc',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\build\\main\\localpycs\\struct.pyc',
    'PYMODULE'),
   ('pyimod01_archive',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\build\\main\\localpycs\\pyimod01_archive.pyc',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\build\\main\\localpycs\\pyimod01_archive.pyc',
    'PYMODULE'),
   ('pyimod02_importers',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\build\\main\\localpycs\\pyimod02_importers.pyc',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\build\\main\\localpycs\\pyimod02_importers.pyc',
    'PYMODULE'),
   ('pyimod03_ctypes',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\build\\main\\localpycs\\pyimod03_ctypes.pyc',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\build\\main\\localpycs\\pyimod03_ctypes.pyc',
    'PYMODULE'),
   ('pyimod04_pywin32',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\build\\main\\localpycs\\pyimod04_pywin32.pyc',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\build\\main\\localpycs\\pyimod04_pywin32.pyc',
    'PYMODULE'),
   ('pyiboot01_bootstrap',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\venv\\Lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\venv\\Lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
    'PYSOURCE'),
   ('pyi_rth_inspect',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
    'PYSOURCE'),
   ('pyi_rth_pkgutil',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
    'PYSOURCE'),
   ('pyi_rth_multiprocessing',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
    'PYSOURCE'),
   ('pyi_rth_pkgres',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
    'PYSOURCE'),
   ('pyi_rth__tkinter',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - '
-   'copia\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
    'PYSOURCE'),
   ('main',
-   'C:\\Users\\Windows\\Documents\\sincronizador-factusol - copia\\main.py',
+   'C:\\Users\\Windows\\Desktop\\Sincronizador - Productos '
+   'Simples\\sincronizador_factusol_TN\\main.py',
    'PYSOURCE')],
  'python311.dll',
  True,

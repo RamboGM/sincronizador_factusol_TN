@@ -3,6 +3,7 @@ from tkinter import filedialog, messagebox
 from tkinter import ttk
 import threading
 import os
+import sys
 import configparser
 import webbrowser
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -11,10 +12,31 @@ from dotenv import load_dotenv
 from scripts.sincronizador import procesar_csv_a_json, sincronizar_productos, exportar_a_csv
 import logging
 
+def obtener_ruta_base():
+    if getattr(sys, 'frozen', False):
+        ruta_base = sys._MEIPASS
+    else:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+    return ruta_base
+
+config_path = os.path.join(obtener_ruta_base(), 'scripts', 'config.txt')
+
+def configurar_icono(root):
+    icono_path = os.path.join(obtener_ruta_base(), "icon.ico")
+    if os.path.exists(icono_path):
+        root.iconbitmap(icono_path)
+    else:
+        logging.warning("El archivo de icono no se encontró en la ruta especificada.")
+
 # Cargar variables de entorno desde el archivo .env
-dotenv_path = os.path.join(os.path.dirname(__file__), 'scripts', '.env')
+dotenv_path = os.path.join(obtener_ruta_base(), 'scripts', '.env')
 load_dotenv(dotenv_path)
 
+if not os.path.exists(dotenv_path):
+    logging.error(f"No se encontró el archivo .env en: {dotenv_path}")
+if not os.path.exists(config_path):
+    logging.error(f"No se encontró el archivo config.txt en: {config_path}")
+    
 # Scheduler
 scheduler = BackgroundScheduler()
 
@@ -23,10 +45,24 @@ log_text = None
 running_thread = None
 stop_event = threading.Event()  # Evento para detener el hilo
 
-config_path = os.path.join(os.path.dirname(__file__), 'scripts', 'config.txt')
+# Definir variables globales para limpiar al cierre
+global productos_creados, productos_actualizados, productos_eliminados
+productos_creados = 0
+productos_actualizados = 0
+productos_eliminados = 0
+
+def limpiar_estado():
+    """Función para limpiar variables globales y cerrar conexiones."""
+    global productos_creados, productos_actualizados, productos_eliminados
+    productos_creados = 0
+    productos_actualizados = 0
+    productos_eliminados = 0
+    if scheduler.running:
+        scheduler.shutdown()  # Detener el scheduler si está activo
+    if running_thread and running_thread.is_alive():
+        stop_event.set()  # Detener el hilo si sigue activo
 
 # Manejador personalizado de logging para redirigir la salida a la interfaz
-# Clase TextHandler actualizada
 class TextHandler(logging.Handler):
     def __init__(self, text_widget):
         super().__init__()
@@ -115,21 +151,19 @@ def main():
     # Crear la interfaz gráfica
     root = tk.Tk()
     root.title("Sincronizador Tienda Nube")
-
-    root.iconbitmap(os.path.join(os.path.dirname(__file__), "icon.ico"))
+    configurar_icono(root)
 
     # Configurar la fuente Montserrat
-    montserrat = ("Montserrat", 10)
+    montserrat = ("Montserrat", 9)  # Fuente más reducida para adaptarse mejor a pantallas pequeñas
 
-    title_font = ("Montserrat", 16, "bold")
+    title_font = ("Montserrat", 14, "bold")
     title_label = tk.Label(root, text="Sincronizador Factusol | Tienda Nube", font=title_font, fg="#01304f")
-    title_label.grid(row=0, column=0, pady=20, columnspan=3)
+    title_label.grid(row=0, column=0, pady=10, columnspan=3)
 
     # Variables para almacenar las rutas de los archivos seleccionados
-    db_path = tk.StringVar(value="")  # Valor predeterminado en blanco
-    csv_path = tk.StringVar(value="")  # Valor predeterminado en blanco
+    db_path = tk.StringVar(value="")
+    csv_path = tk.StringVar(value="")
 
-    # Función para seleccionar la base de datos de Factusol
     def seleccionar_db():
         path = filedialog.askopenfilename(
             title="Seleccionar archivo de base de datos de Factusol",
@@ -138,15 +172,11 @@ def main():
         if path:
             db_path.set(path)
 
-    # Función para seleccionar el directorio donde se guardarán los CSV
     def seleccionar_directorio_csv():
-        path = filedialog.askdirectory(
-            title="Seleccionar directorio para guardar archivos CSV"
-        )
+        path = filedialog.askdirectory(title="Seleccionar directorio para guardar archivos CSV")
         if path:
             csv_path.set(path)
 
-    # Función para guardar la configuración en config.txt
     def guardar_configuracion():
         config = leer_configuracion()
         config['DEFAULT']['db_path'] = db_path.get()
@@ -155,7 +185,6 @@ def main():
             config.write(config_file)
         log("Configuración guardada correctamente.")
 
-    # Funciones para manejar la sincronización
     def sincronizacion_manual():
         global running_thread
         try:
@@ -164,14 +193,12 @@ def main():
                 log("Sincronización cancelada antes de comenzar.")
                 return
 
-            # Ejecutar exportación a CSV
             exportar_a_csv(db_path.get(), csv_path.get(), send_to_gui=log)
 
             if stop_event.is_set():
                 log("Sincronización cancelada después de exportar CSV.")
                 return
 
-            # Procesar los CSV y sincronizar con Tienda Nube directamente
             csv_files = [
                 os.path.join(csv_path.get(), "F_ART.csv"),
                 os.path.join(csv_path.get(), "F_LTA.csv"),
@@ -182,7 +209,7 @@ def main():
             ]
 
             productos_nuevos = procesar_csv_a_json(csv_files)
-            sincronizar_productos(productos_nuevos, log_func=log, stop_event=stop_event)  # Asegúrate de pasar log_func y stop_event
+            sincronizar_productos(productos_nuevos, log_func=log, stop_event=stop_event)
 
         except Exception as e:
             log(f"Error en sincronización manual: {e}")
@@ -214,12 +241,11 @@ def main():
         else:
             log("No hay sincronización en curso.")
 
-    # Funciones para la sincronización automática
     def activar_sincronizacion_automatica():
         hora = hora_sincronizacion.get()
         if hora:
             try:
-                guardar_hora_sincronizacion(hora)  # Guardar la hora en el archivo de configuración
+                guardar_hora_sincronizacion(hora)
                 hh, mm = hora.split(":")
                 scheduler.add_job(sincronizacion_manual, CronTrigger(hour=hh, minute=mm))
                 scheduler.start()
@@ -233,39 +259,43 @@ def main():
         scheduler.remove_all_jobs()
         log("Sincronización automática cancelada.")
 
-    root.minsize(600, 600)
+    root.minsize(700, 500)  # Tamaño mínimo ajustado
+    root.geometry("750x550")  # Tamaño inicial más compacto
+
     main_frame = ttk.Frame(root, padding="10")
     main_frame.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
     db_button = ttk.Button(main_frame, text="Seleccionar Base de Datos", command=seleccionar_db, style='TButton')
-    db_button.grid(row=0, column=0, pady=10, columnspan=2, sticky=tk.W+tk.E)
+    db_button.grid(row=0, column=0, pady=5, sticky="ew")
 
     csv_button = ttk.Button(main_frame, text="Seleccionar Directorio CSV", command=seleccionar_directorio_csv, style='TButton')
-    csv_button.grid(row=0, column=2, pady=10, columnspan=2, sticky=tk.W+tk.E)
+    csv_button.grid(row=0, column=1, pady=5, sticky="ew")
 
     db_label_frame = ttk.LabelFrame(main_frame, text="Ruta de la Base de Datos")
-    db_label_frame.grid(row=1, column=0, pady=5, padx=10, columnspan=4, sticky=tk.W+tk.E)
-    db_label = ttk.Label(db_label_frame, textvariable=db_path, font=montserrat, background="white", relief="solid", padding=5, width=60, anchor='w')
-    db_label.grid(row=0, column=0, sticky=tk.W+tk.E)
+    db_label_frame.grid(row=1, column=0, pady=5, padx=10, columnspan=2, sticky="ew")
+    db_label_frame.grid_columnconfigure(0, weight=1)
+    db_label = ttk.Label(db_label_frame, textvariable=db_path, font=montserrat, background="white", relief="solid", padding=5, anchor='w')
+    db_label.grid(row=0, column=0, sticky="ew")
 
     csv_label_frame = ttk.LabelFrame(main_frame, text="Carpeta para archivos CSV")
-    csv_label_frame.grid(row=2, column=0, pady=5, padx=10, columnspan=4, sticky=tk.W+tk.E)
-    csv_label = ttk.Label(csv_label_frame, textvariable=csv_path, font=montserrat, background="white", relief="solid", padding=5, width=60, anchor='w')
-    csv_label.grid(row=0, column=0, sticky=tk.W+tk.E)
+    csv_label_frame.grid(row=2, column=0, pady=5, padx=10, columnspan=2, sticky="ew")
+    csv_label_frame.grid_columnconfigure(0, weight=1)
+    csv_label = ttk.Label(csv_label_frame, textvariable=csv_path, font=montserrat, background="white", relief="solid", padding=5, anchor='w')
+    csv_label.grid(row=0, column=0, sticky="ew")
 
     save_button = ttk.Button(main_frame, text="Guardar Configuración", command=guardar_configuracion, style='TButton')
-    save_button.grid(row=3, column=0, columnspan=4, pady=10, sticky=tk.W+tk.E)
+    save_button.grid(row=3, column=0, columnspan=2, pady=5, sticky="ew")
 
     sync_button = ttk.Button(main_frame, text="Sincronizar Ahora", command=iniciar_sincronizacion, style='TButton')
-    sync_button.grid(row=4, column=0, pady=10, columnspan=2, sticky=tk.W+tk.E)
+    sync_button.grid(row=4, column=0, pady=5, sticky="ew")
 
     cancel_button = ttk.Button(main_frame, text="Cancelar", command=cancelar_sincronizacion, style='TButton')
-    cancel_button.grid(row=4, column=2, pady=10, columnspan=2, sticky=tk.W+tk.E)
+    cancel_button.grid(row=4, column=1, pady=5, sticky="ew")
 
-    ttk.Label(main_frame, text="Configuración de sincronización automática", font=("Montserrat", 12, "bold")).grid(row=5, column=0, columnspan=4, pady=10)
+    ttk.Label(main_frame, text="Configuración de sincronización automática", font=("Montserrat", 11, "bold")).grid(row=5, column=0, columnspan=2, pady=10, sticky="ew")
 
     hora_frame = ttk.Frame(main_frame)
-    hora_frame.grid(row=6, column=0, columnspan=4, pady=5)
+    hora_frame.grid(row=6, column=0, columnspan=2, pady=5, sticky="ew")
 
     ttk.Label(hora_frame, text="Hora de sincronización (HH:MM):", font=montserrat).grid(row=0, column=0, pady=5, padx=(0, 10), sticky=tk.E)
     hora_sincronizacion = tk.StringVar(value=hora_guardada)
@@ -273,17 +303,22 @@ def main():
     hora_entry.grid(row=0, column=1, pady=5, sticky=tk.W)
 
     activar_sync_button = ttk.Button(main_frame, text="Activar Sincronización", command=activar_sincronizacion_automatica, style='TButton')
-    activar_sync_button.grid(row=7, column=0, pady=10, columnspan=2, sticky=tk.EW)
+    activar_sync_button.grid(row=7, column=0, pady=5, sticky="ew")
 
     cancelar_sync_button = ttk.Button(main_frame, text="Cancelar Sincronización", command=cancelar_sincronizacion_automatica, style='TButton')
-    cancelar_sync_button.grid(row=7, column=2, pady=10, columnspan=2, sticky=tk.EW)
+    cancelar_sync_button.grid(row=7, column=1, pady=5, sticky="ew")
 
-    global log_text
-    log_text = tk.Text(main_frame, wrap='word', height=15, width=80, font=montserrat, borderwidth=2, relief="solid")
-    log_text.grid(row=8, column=0, columnspan=4, pady=10, sticky=tk.W+tk.E)
+    log_frame = ttk.Frame(main_frame)
+    log_frame.grid(row=8, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
+
+    log_scrollbar = tk.Scrollbar(log_frame, orient=tk.VERTICAL)
+    log_text = tk.Text(log_frame, wrap='word', height=12, font=montserrat, borderwidth=2, relief="solid", yscrollcommand=log_scrollbar.set)
+    log_scrollbar.config(command=log_text.yview)
+    log_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+    log_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
     buscar_frame = ttk.Frame(root)
-    buscar_frame.grid(row=9, column=0, pady=10, sticky=tk.EW)
+    buscar_frame.grid(row=9, column=0, pady=5, sticky=tk.EW)
 
     ttk.Label(buscar_frame, text="Buscar SKU o palabra:", font=montserrat).grid(row=0, column=0, padx=(10, 5))
 
@@ -309,17 +344,22 @@ def main():
     def abrir_enlace(event):
         webbrowser.open_new("https://tiendapocket.com/")
 
-    footer = tk.Label(root, text="Desarrollado por Tienda Pocket", font=("Montserrat", 10), fg="blue", cursor="hand2")
-    footer.grid(row=10, column=0, pady=10)
+    footer = tk.Label(root, text="Desarrollado por Tienda Pocket", font=("Montserrat", 9), fg="blue", cursor="hand2")
+    footer.grid(row=10, column=0, pady=5)
     footer.bind("<Button-1>", abrir_enlace)
 
-    root.grid_rowconfigure(0, weight=1)
+    root.grid_rowconfigure(1, weight=1)
     root.grid_columnconfigure(0, weight=1)
-    root.grid_rowconfigure(1, weight=0)
+    main_frame.grid_rowconfigure(8, weight=1)
+    main_frame.grid_columnconfigure(0, weight=1)
+    main_frame.grid_columnconfigure(1, weight=1)
 
     style = ttk.Style()
-    style.configure('TButton', font=montserrat, padding=6, relief="flat")
+    style.configure('TButton', font=montserrat, padding=5, relief="flat")
     style.map('TButton', foreground=[('pressed', 'white'), ('active', '#01304f')], background=[('pressed', '#007ACC'), ('active', '#007ACC')])
+
+    # Vincular la limpieza de estado al cerrar la aplicación
+    root.protocol("WM_DELETE_WINDOW", lambda: (limpiar_estado(), root.destroy()))
 
     root.mainloop()
 

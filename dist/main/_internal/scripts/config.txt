@@ -1,0 +1,5 @@
+[DEFAULT]
+db_path = C:/Users/Windows/Desktop/CSV/9992024.accdb
+csv_path = C:/Users/Windows/Desktop/CSV
+hora_sincronizacion = 12:37
+

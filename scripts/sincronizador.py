@@ -10,13 +10,20 @@ import csv
 from concurrent.futures import ThreadPoolExecutor
 from dotenv import load_dotenv
 
+def obtener_ruta_base():
+    if getattr(sys, 'frozen', False):  # Verifica si está empaquetado con PyInstaller
+        ruta_base = sys._MEIPASS  # Carpeta temporal donde se extraen los archivos
+    else:
+        ruta_base = os.path.dirname(os.path.abspath(__file__))  # Carpeta actual en modo de desarrollo
+    return ruta_base
+
 # Configuración de logging
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s", handlers=[
     logging.StreamHandler(sys.stdout)
 ])
 
 # Cargar variables de entorno desde el archivo .env
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+dotenv_path = os.path.join(obtener_ruta_base(), '.env')
 load_dotenv(dotenv_path)
 
 # Obtener el token de acceso y el ID de usuario
@@ -359,7 +366,7 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None, st
 
     productos_existentes_dict = {}
     productos_nuevos_dict = {}
-    total_productos_procesados = 0
+    total_productos_procesados = 0  # Asegurarse de inicializar el contador correctamente
     total_productos = len(productos_nuevos)
 
     # Crear un diccionario con los productos existentes para búsqueda rápida por SKU
@@ -375,6 +382,8 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None, st
         if stop_event and stop_event.is_set():  # Verificación de cancelación
             log_func("Sincronización cancelada.")
             return  # Salir inmediatamente si se solicita la cancelación
+
+        total_productos_procesados += 1  # Incrementar el contador al procesar un producto
 
         if "variants" in producto:
             for variant in producto["variants"]:
@@ -400,7 +409,6 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None, st
                         log_func(f"Actualizando producto SKU: {sku}")
                         if not producto_existente.get('sincronizado', False):  # Asegurarse de que no se actualice dos veces
                             actualizar_producto(producto_existente["id"], producto, producto_existente["variants"])
-                            productos_actualizados += 1
                             producto_existente['sincronizado'] = True  # Marcar como sincronizado
                 else:
                     if stop_event and stop_event.is_set():  # Verificación de cancelación
@@ -410,7 +418,6 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None, st
                     if not producto.get('sincronizado', False):  # Asegurarse de que no se cree dos veces
                         status_code = crear_producto(producto)
                         if status_code == 201:  # Solo incrementa si se creó correctamente
-                            productos_creados += 1
                             producto['sincronizado'] = True  # Marcar como sincronizado
 
     # Verificación de productos a eliminar
@@ -424,7 +431,6 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None, st
             if not producto_existente.get('sincronizado', False):  # Asegurarse de que no se elimine dos veces
                 eliminar_producto(producto_existente["id"])
                 productos_eliminados_list.append(sku)
-                productos_eliminados += 1
                 producto_existente['sincronizado'] = True  # Marcar como sincronizado
 
     # Forzar que los logs se muestren correctamente
@@ -432,10 +438,11 @@ def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None, st
     log_func(f"Productos creados: {productos_creados}")
     log_func(f"Productos actualizados: {productos_actualizados}")
     log_func(f"Productos eliminados: {productos_eliminados}")
-    log_func(f"Total productos procesados: {total_productos_procesados}")
+    log_func(f"Total productos procesados: {total_productos_procesados}")  # Mostrar el total correctamente
     log_func(f"---------------------------------\n")
 
     log_func("Sincronización manual completada.")
+
 
 
 
