@@ -291,6 +291,10 @@ def procesar_csv_a_json(csv_files):
             data[os.path.basename(csv_file)] = list(reader)
     
     for row in data.get("F_ART.csv", []):
+        # Filtrar los productos según el valor de SUWART
+        if row.get("SUWART") != "1":
+            continue  # Si SUWART no es 1, se ignora este producto
+
         producto = {
             "name": row["DESART"],
             "sku": row["CODART"],
@@ -355,6 +359,7 @@ def procesar_csv_a_json(csv_files):
         productos.append(producto)
     
     return productos
+
 
 def sincronizar_productos(productos_nuevos, log_func=None, progress_bar=None, stop_event=None):
     global productos_creados, productos_actualizados, productos_eliminados
