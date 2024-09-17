@@ -86,14 +86,10 @@ def exportar_a_csv(access_file_path, csv_directory, send_to_gui=None):
 def manejar_rate_limit(headers):
     rate_remaining = int(headers.get('x-rate-limit-remaining', 0))
     rate_reset = int(headers.get('x-rate-limit-reset', 0))
-    
     if rate_remaining < 5:
         wait_time = max(rate_reset / 1000.0, 1)
         logging.info(f"Rate limit alcanzado. Esperando {wait_time:.2f} segundos para continuar...")
         time.sleep(wait_time)
-    elif rate_remaining < 10:
-        logging.info("Cerca del límite de tasa, reduciendo la frecuencia de las solicitudes...")
-        time.sleep(1)
 
 def normalizar_sku(sku):
     return sku.strip().upper() if sku else ""
@@ -115,6 +111,7 @@ def obtener_productos_existentes():
             if not data:
                 break
 
+            # Obtener variantes de cada producto
             for producto in data:
                 producto_id = producto.get('id')
                 variantes = obtener_variantes_existentes(producto_id)
@@ -132,25 +129,24 @@ def obtener_productos_existentes():
 
     return productos_existentes
 
-def obtener_variantes_existentes(producto_id, reintentos=3):
+
+def obtener_variantes_existentes(producto_id):
+    """
+    Obtiene todas las variantes existentes de un producto específico en Tienda Nube.
+    """
     headers = obtener_headers()
+
     url_variants = f"{api_url}/{producto_id}/variants"
     variantes_existentes = []
 
-    for intento in range(reintentos):
-        response = requests.get(url_variants, headers=headers)
-        manejar_rate_limit(response.headers)
+    response = requests.get(url_variants, headers=headers)
+    manejar_rate_limit(response.headers)
 
-        if response.status_code == 200:
-            variantes_existentes = response.json()
-            logging.debug(f"Variantes obtenidas para el producto {producto_id}: {len(variantes_existentes)} variantes")
-            break
-        elif response.status_code == 500:
-            logging.warning(f"Error al obtener variantes para el producto {producto_id} (Intento {intento + 1} de {reintentos}): {response.status_code} {response.text}")
-            time.sleep(2 ** intento)
-        else:
-            logging.error(f"Error al obtener variantes para el producto {producto_id}: {response.status_code} {response.text}")
-            break
+    if response.status_code == 200:
+        variantes_existentes = response.json()
+        logging.debug(f"Variantes obtenidas para el producto {producto_id}: {len(variantes_existentes)} variantes")
+    else:
+        logging.error(f"Error al obtener variantes para el producto {producto_id}: {response.status_code} {response.text}")
 
     return variantes_existentes
 
@@ -168,10 +164,21 @@ def variantes_iguales(var_existente, var_nuevo):
         safe_float(var_existente.get("cost", 0)) == safe_float(var_nuevo.get("cost", 0))
     )
 
+def variantes_diferentes(variante_existente, variante_nueva):
+    """
+    Compara dos variantes y determina si hay diferencias significativas.
+    """
+    campos_a_comparar = ['price', 'stock', 'barcode', 'cost', 'values']
+
+    for campo in campos_a_comparar:
+        if variante_existente.get(campo) != variante_nueva.get(campo):
+            return True
+
+    return False
+
 def productos_iguales(prod_existente, prod_nuevo):
-    # Ignorar diferencias en espacios adicionales al comparar nombres
-    nombre_existente = " ".join(prod_existente.get("name", {}).get("es", "").split()).lower()
-    nombre_nuevo = " ".join(prod_nuevo.get("name", {}).get("es", "").split()).lower()
+    nombre_existente = prod_existente.get("name", {}).get("es", "").strip().lower()
+    nombre_nuevo = prod_nuevo.get("name", {}).get("es", "").strip().lower()
 
     if nombre_existente != nombre_nuevo:
         logging.debug(f"Diferencia en nombre: '{nombre_existente}' vs '{nombre_nuevo}'")
@@ -210,71 +217,84 @@ def actualizar_producto(producto_id, producto_data, variantes_existentes):
     if response.status_code == 200:
         logging.info(f"Producto {producto_id} actualizado correctamente.")
         productos_actualizados += 1
-        actualizar_variantes(producto_id, producto_data.get("variants", []))
+        actualizar_variantes(producto_id, producto_data.get("variants", []), variantes_existentes)
     else:
         logging.error(f"Error al actualizar producto {producto_id}: {response.status_code} {response.text}")
 
-def actualizar_variantes(producto_id, variantes_nuevas):
-    """
-    Actualiza o crea variantes de un producto existente en Tienda Nube.
-    """
+def actualizar_variantes(producto_id, variantes_nuevas, variantes_existentes):
     headers = obtener_headers()
-    variantes_existentes = obtener_variantes_existentes(producto_id)
-    
-    variantes_existentes_dict = {
-        (normalizar_sku(var.get("sku")), tuple(sorted(val.get("es") for val in var.get("values", []) if val.get("es")))): var
-        for var in variantes_existentes
-    }
+    variantes_para_patch = []
 
     for variante_nueva in variantes_nuevas:
-        sku_normalizado = normalizar_sku(variante_nueva.get("sku"))
-        valores_variacion = tuple(sorted(val.get("es") for val in variante_nueva.get("values", []) if val.get("es")))
+        # Buscar la variante existente correspondiente por SKU
+        variante_existente = next((v for v in variantes_existentes if v['sku'] == variante_nueva.get('sku')), None)
 
-        key = (sku_normalizado, valores_variacion)
-        if key in variantes_existentes_dict:
-            variante_existente = variantes_existentes_dict[key]
+        if variante_existente:
+            # Verifica si hay diferencias entre la variante nueva y la existente
+            if variantes_diferentes(variante_existente, variante_nueva):
+                # Preparar los cambios necesarios
+                cambios = {"id": variante_existente["id"]}
+                for key in ["price", "promotional_price", "stock", "weight", "width", "height", "depth", "sku", "barcode", "mpn", "age_group", "gender", "cost", "values"]:
+                    if variante_existente.get(key) != variante_nueva.get(key) and variante_nueva.get(key) is not None:
+                        cambios[key] = variante_nueva.get(key)
 
-            if not variantes_iguales(variante_existente, variante_nueva):
-                variante_id = variante_existente.get("id")
-                url = f"{api_url}/{producto_id}/variants/{variante_id}"
-                response = requests.put(url, headers=headers, json=variante_nueva)
-                manejar_rate_limit(response.headers)
-
-                if response.status_code == 200:
-                    logging.info(f"Variante {variante_id} del producto {producto_id} actualizada correctamente.")
+                # Evitar variantes duplicadas antes de aplicar el PATCH
+                if not es_variantes_duplicada(cambios, variantes_existentes):
+                    variantes_para_patch.append(cambios)
                 else:
-                    logging.error(f"Error al actualizar variante {variante_id} del producto {producto_id}: {response.status_code} {response.text}")
+                    logging.info(f"Variantes duplicadas encontradas. No se aplicará PATCH para la variante con SKU {variante_nueva['sku']}.")
             else:
-                logging.info(f"Variante {sku_normalizado} con valores {valores_variacion} ya está actualizada y no necesita cambios.")
+                logging.info(f"No se encontraron cambios relevantes para la variante con SKU {variante_nueva['sku']}.")
         else:
-            logging.info(f"Creando nueva variante {variante_nueva['sku']} para el producto {producto_id} con valores {valores_variacion}...")
-            if not crear_variante(producto_id, variante_nueva):
-                logging.warning(f"Se omitió la creación de la variante con SKU {sku_normalizado} porque ya existe.")
+            # Crear nueva variante
+            logging.info(f"Creando nueva variante para producto {producto_id} con SKU {variante_nueva['sku']}.")
+            response = requests.post(f"{api_url}/{producto_id}/variants", headers=headers, json=variante_nueva)
+            manejar_rate_limit(response.headers)
 
-def crear_variante(producto_id, variante_data):
-    """
-    Crea una nueva variante para un producto en Tienda Nube.
-    """
-    headers = obtener_headers()
-    url = f"{api_url}/{producto_id}/variants"
-    response = requests.post(url, headers=headers, json=variante_data)
-    manejar_rate_limit(response.headers)
+            if response.status_code == 201:
+                logging.info(f"Variante con SKU {variante_nueva['sku']} creada correctamente.")
+            else:
+                logging.error(f"Error al crear variante para producto {producto_id}: {response.status_code} {response.text}")
 
-    if response.status_code == 201:
-        logging.info(f"Variante para producto {producto_id} creada correctamente.")
-        return True
+    if variantes_para_patch:
+        logging.info(f"Actualizando variantes específicas para el producto {producto_id} usando PATCH.")
+        response = requests.patch(f"{api_url}/{producto_id}/variants", headers=headers, json=variantes_para_patch)
+        manejar_rate_limit(response.headers)
+
+        if response.status_code == 200:
+            logging.info(f"Variantes del producto {producto_id} actualizadas correctamente con PATCH.")
+        else:
+            try:
+                error_details = response.json()
+                logging.error(f"Error al actualizar variantes del producto {producto_id} con PATCH: {response.status_code} - {error_details}")
+            except json.JSONDecodeError:
+                logging.error(f"Error al actualizar variantes del producto {producto_id} con PATCH: {response.status_code} - {response.text}")
     else:
-        logging.error(f"Error al crear variante para producto {producto_id}: {response.status_code} {response.text}")
+        logging.info(f"No hay cambios necesarios en las variantes del producto {producto_id}.")
 
-        if response.status_code == 422 and "Variants cannot be repeated" in response.text:
-            logging.warning(f"Variante con SKU {variante_data['sku']} ya existe para el producto {producto_id}. No se creará nuevamente.")
-        return False
+
+def es_variantes_duplicada(cambios, variantes_existentes):
+    """
+    Verifica si la variante que intentamos actualizar se duplicará en la tienda.
+    """
+    for variante in variantes_existentes:
+        # Compara los campos relevantes que podrían causar duplicación
+        if (
+            cambios.get("sku") == variante.get("sku") and
+            cambios.get("price") == variante.get("price") and
+            cambios.get("stock") == variante.get("stock") and
+            cambios.get("values") == variante.get("values")  # Asegura que los valores (atributos) sean los mismos
+        ):
+            return True  # Hay un duplicado
+    return False
+
 
 def crear_producto(producto_data, log_func=None):
     global productos_creados
 
     headers = obtener_headers()
 
+    # Imprimir el JSON antes de enviarlo para depuración
     logging.debug(f"Enviando JSON para crear producto: {json.dumps(producto_data, indent=4)}")
 
     response = requests.post(api_url, headers=headers, json=producto_data)
@@ -316,14 +336,16 @@ def procesar_csv_a_json(csv_files):
     productos = []
     data = {}
 
+    # Cargar los datos de todos los archivos CSV en un diccionario
     for csv_file in csv_files:
         with open(csv_file, newline='', encoding='utf-8') as file:
             reader = csv.DictReader(file, delimiter=';')
             data[os.path.basename(csv_file)] = list(reader)
 
+    # Procesar los productos de la tabla F_ART
     for row in data.get("F_ART.csv", []):
         if row.get("SUWART") != "1":
-            continue
+            continue  # Ignorar productos que no deben subirse
 
         producto = {
             "name": {"es": row["DESART"]},
@@ -335,14 +357,13 @@ def procesar_csv_a_json(csv_files):
             "attributes": []
         }
 
+        # Verificar si el producto tiene variantes buscando en F_ARC
         variantes_encontradas = [arc_row for arc_row in data.get("F_ARC.csv", []) if arc_row["ARTARC"] == row["CODART"]]
         if variantes_encontradas:
+            # Producto con variantes
             atributos_set = set()
 
             for arc_row in variantes_encontradas:
-                if not arc_row.get("CE1ARC") and not arc_row.get("CE2ARC"):
-                    continue
-
                 variante = {
                     "sku": row["CODART"],
                     "price": None,
@@ -352,6 +373,7 @@ def procesar_csv_a_json(csv_files):
                     "values": []
                 }
 
+                # Agregar valores de atributos a la variante
                 if arc_row["CE1ARC"]:
                     atributos_set.add("Talle")
                     variante["values"].append({"es": arc_row["CE1ARC"]})
@@ -360,19 +382,18 @@ def procesar_csv_a_json(csv_files):
                     atributos_set.add("Color")
                     variante["values"].append({"es": arc_row["CE2ARC"]})
 
+                # Obtener el precio de la tabla F_LTC
                 for lt_row in data.get("F_LTC.csv", []):
                     if lt_row["ARTLTC"] == row["CODART"] and lt_row["CE1LTC"] == arc_row["CE1ARC"]:
                         variante["price"] = lt_row.get("PRELTC")
                         break
 
+                # Obtener el stock de la tabla F_STC
                 stock_asignado = False
                 for st_row in data.get("F_STC.csv", []):
-                    if not st_row.get("CE1STC"):
-                        continue
-
                     if st_row["ARTSTC"] == row["CODART"] and st_row["CE1STC"] == arc_row["CE1ARC"]:
                         stock_value = int(float(st_row.get("DISSTC", 0)))
-                        variante["stock"] = max(stock_value, 0)
+                        variante["stock"] = max(stock_value, 0)  # Ajustar stock negativo a 0
                         stock_asignado = True
                         break
 
@@ -381,20 +402,12 @@ def procesar_csv_a_json(csv_files):
 
                 producto["variants"].append(variante)
 
-            variantes_unicas = []
-            combinaciones = set()
-            for variante in producto["variants"]:
-                valores_tuple = tuple(sorted([v["es"] for v in variante["values"]]))
-                if valores_tuple not in combinaciones:
-                    combinaciones.add(valores_tuple)
-                    variantes_unicas.append(variante)
-
-            producto["variants"] = variantes_unicas
-
+            # Añadir atributos al producto
             for nombre in atributos_set:
                 producto["attributes"].append({"es": nombre})
 
         else:
+            # Producto simple
             variante_simple = {
                 "sku": row["CODART"],
                 "price": None,
@@ -404,15 +417,17 @@ def procesar_csv_a_json(csv_files):
                 "values": []
             }
 
+            # Obtener precio de la tabla F_LTA
             for lt_row in data.get("F_LTA.csv", []):
                 if lt_row["ARTLTA"] == row["CODART"]:
                     variante_simple["price"] = lt_row.get("PRELTA")
                     break
 
+            # Obtener stock de la tabla F_STO
             for st_row in data.get("F_STO.csv", []):
                 if st_row["ARTSTO"] == row["CODART"]:
                     stock_value = int(float(st_row.get("DISSTO", 0)))
-                    variante_simple["stock"] = max(stock_value, 0)
+                    variante_simple["stock"] = max(stock_value, 0)  # Ajustar stock negativo a 0
                     break
 
             producto["variants"].append(variante_simple)
@@ -427,17 +442,15 @@ def sincronizar_productos(productos_nuevos, log_func=None, stop_event=None):
     productos_actualizados = 0
     productos_eliminados = 0
 
-    # Obtener todos los productos existentes desde Tienda Nube
     productos_existentes = obtener_productos_existentes()
 
-    # Crear diccionarios para búsqueda rápida por SKU
+    # Crear un diccionario de productos existentes y sus variantes
     productos_existentes_dict = {normalizar_sku(variant.get("sku")): prod for prod in productos_existentes for variant in prod.get("variants", [])}
     productos_nuevos_dict = {normalizar_sku(prod.get("sku")): prod for prod in productos_nuevos}
 
     total_productos_procesados = 0
     total_productos = len(productos_nuevos)
 
-    # Sincronización de productos
     for producto_nuevo in productos_nuevos:
         if stop_event and stop_event.is_set():
             log_func("Sincronización cancelada.")
@@ -450,32 +463,34 @@ def sincronizar_productos(productos_nuevos, log_func=None, stop_event=None):
             log_func(f"Producto sin SKU, ignorado.")
             continue
 
-        # Comprobar si el producto ya existe
         producto_existente = productos_existentes_dict.get(sku)
 
         if producto_existente:
             log_func(f"Comparando producto existente con SKU: {sku}")
-            # Comparar el producto principal
+
+            # Obtener variantes existentes usando el nuevo método
+            variantes_existentes = obtener_variantes_existentes(producto_existente["id"])
+
             if productos_iguales(producto_existente, producto_nuevo):
                 log_func(f"El producto SKU: {sku} ya está actualizado. Verificando variantes...")
-                actualizar_variantes(producto_existente["id"], producto_nuevo.get("variants", []))
+                actualizar_variantes(producto_existente["id"], producto_nuevo.get("variants", []), variantes_existentes)
             else:
                 log_func(f"Actualizando producto SKU: {sku}")
-                actualizar_producto(producto_existente["id"], producto_nuevo, producto_existente.get("variants", []))
+                actualizar_producto(producto_existente["id"], producto_nuevo, variantes_existentes)
         else:
             log_func(f"Creando nuevo producto SKU: {sku}")
-            crear_producto(producto_nuevo)
+            status_code = crear_producto(producto_nuevo)
+            if status_code == 201:
+                producto_nuevo['sincronizado'] = True
 
-    # Verificación de productos a eliminar
     for sku, producto_existente in productos_existentes_dict.items():
         if stop_event and stop_event.is_set():
             log_func("Sincronización cancelada.")
             return
         if sku not in productos_nuevos_dict:
-            log_func(f"Eliminando producto con SKU: {sku} que ya no está en la base de datos.")
+            log_func(f"Eliminando producto con SKU: {sku} que ya no está en Base de Datos.")
             eliminar_producto(producto_existente["id"])
 
-    # Forzar que los logs se muestren correctamente
     log_func(f"\n--- Resumen de Sincronización ---")
     log_func(f"Productos creados: {productos_creados}")
     log_func(f"Productos actualizados: {productos_actualizados}")
@@ -484,4 +499,3 @@ def sincronizar_productos(productos_nuevos, log_func=None, stop_event=None):
     log_func(f"---------------------------------\n")
 
     log_func("Sincronización manual completada.")
-

@@ -1,0 +1,4970 @@
+[
+    {
+        "id": 231459553,
+        "name": {
+            "es": "CREED SOCK"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "creed-sock"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/creed-sock/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:51+0000",
+        "updated_at": "2024-09-16T19:56:53+0000",
+        "variants": [
+            {
+                "id": 1018540081,
+                "image_id": null,
+                "product_id": 231459553,
+                "position": 1,
+                "price": "13192.00",
+                "compare_at_price": "13192.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "ACF0018",
+                "values": [
+                    {
+                        "es": "UNI"
+                    }
+                ],
+                "barcode": "9000000148604",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:51+0000",
+                "updated_at": "2024-09-16T19:56:51+0000",
+                "cost": "6596.00",
+                "inventory_levels": [
+                    {
+                        "id": 645990902,
+                        "variant_id": 1018540081,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459559,
+        "name": {
+            "es": "FELINE SOCK"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "feline-sock"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/feline-sock/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:52+0000",
+        "updated_at": "2024-09-16T19:56:54+0000",
+        "variants": [
+            {
+                "id": 1018540112,
+                "image_id": null,
+                "product_id": 231459559,
+                "position": 1,
+                "price": "13192.00",
+                "compare_at_price": "13192.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "ACF0019",
+                "values": [
+                    {
+                        "es": "UNI"
+                    }
+                ],
+                "barcode": "9000000148628",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:52+0000",
+                "updated_at": "2024-09-16T19:56:52+0000",
+                "cost": "6596.00",
+                "inventory_levels": [
+                    {
+                        "id": 645990932,
+                        "variant_id": 1018540112,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459564,
+        "name": {
+            "es": "ACID ROJO SOCK"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "acid-rojo-sock"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/acid-rojo-sock/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:53+0000",
+        "updated_at": "2024-09-16T19:56:54+0000",
+        "variants": [
+            {
+                "id": 1018540139,
+                "image_id": null,
+                "product_id": 231459564,
+                "position": 1,
+                "price": "13192.00",
+                "compare_at_price": "13192.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "ACF0020",
+                "values": [
+                    {
+                        "es": "UNI"
+                    }
+                ],
+                "barcode": "9000000148642",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:53+0000",
+                "updated_at": "2024-09-16T19:56:53+0000",
+                "cost": "6596.00",
+                "inventory_levels": [
+                    {
+                        "id": 645990960,
+                        "variant_id": 1018540139,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459566,
+        "name": {
+            "es": "PARKA SOCK"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "parka-sock"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/parka-sock/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:53+0000",
+        "updated_at": "2024-09-16T19:56:54+0000",
+        "variants": [
+            {
+                "id": 1018540160,
+                "image_id": null,
+                "product_id": 231459566,
+                "position": 1,
+                "price": "13192.00",
+                "compare_at_price": "13192.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "ACF0021",
+                "values": [
+                    {
+                        "es": "UNI"
+                    }
+                ],
+                "barcode": "9000000148666",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:54+0000",
+                "updated_at": "2024-09-16T19:56:54+0000",
+                "cost": "6596.00",
+                "inventory_levels": [
+                    {
+                        "id": 645990981,
+                        "variant_id": 1018540160,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459570,
+        "name": {
+            "es": "FLAME SOCK"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "flame-sock"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/flame-sock/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:54+0000",
+        "updated_at": "2024-09-16T19:56:55+0000",
+        "variants": [
+            {
+                "id": 1018540173,
+                "image_id": null,
+                "product_id": 231459570,
+                "position": 1,
+                "price": "13192.00",
+                "compare_at_price": "13192.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "ACF0022",
+                "values": [
+                    {
+                        "es": "UNI"
+                    }
+                ],
+                "barcode": "9000000148680",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:54+0000",
+                "updated_at": "2024-09-16T19:56:54+0000",
+                "cost": "6596.00",
+                "inventory_levels": [
+                    {
+                        "id": 645990994,
+                        "variant_id": 1018540173,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459574,
+        "name": {
+            "es": "NASA SOCK"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "nasa-sock"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/nasa-sock/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:55+0000",
+        "updated_at": "2024-09-16T19:56:56+0000",
+        "variants": [
+            {
+                "id": 1018540193,
+                "image_id": null,
+                "product_id": 231459574,
+                "position": 1,
+                "price": "13192.00",
+                "compare_at_price": "13192.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "ACF0023",
+                "values": [
+                    {
+                        "es": "UNI"
+                    }
+                ],
+                "barcode": "9000000148703",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:55+0000",
+                "updated_at": "2024-09-16T19:56:55+0000",
+                "cost": "6596.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991013,
+                        "variant_id": 1018540193,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459579,
+        "name": {
+            "es": "NASA GLOVES NEGRO"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "nasa-gloves-negro"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/nasa-gloves-negro/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:56+0000",
+        "updated_at": "2024-09-16T19:56:58+0000",
+        "variants": [
+            {
+                "id": 1018540212,
+                "image_id": null,
+                "product_id": 231459579,
+                "position": 1,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23001",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000147775",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:56+0000",
+                "updated_at": "2024-09-16T19:56:56+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991032,
+                        "variant_id": 1018540212,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540215,
+                "image_id": null,
+                "product_id": 231459579,
+                "position": 2,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23001",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000147775",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:56+0000",
+                "updated_at": "2024-09-16T19:56:56+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991035,
+                        "variant_id": 1018540215,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540219,
+                "image_id": null,
+                "product_id": 231459579,
+                "position": 3,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23001",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000147775",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:56+0000",
+                "updated_at": "2024-09-16T19:56:56+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991040,
+                        "variant_id": 1018540219,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540223,
+                "image_id": null,
+                "product_id": 231459579,
+                "position": 4,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23001",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000147775",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:56+0000",
+                "updated_at": "2024-09-16T19:56:56+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991043,
+                        "variant_id": 1018540223,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459587,
+        "name": {
+            "es": "NASA GLOVES BLANCO"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "nasa-gloves-blanco"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/nasa-gloves-blanco/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:57+0000",
+        "updated_at": "2024-09-16T19:56:57+0000",
+        "variants": [
+            {
+                "id": 1018540238,
+                "image_id": null,
+                "product_id": 231459587,
+                "position": 1,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23002",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000147829",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:57+0000",
+                "updated_at": "2024-09-16T19:56:57+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991058,
+                        "variant_id": 1018540238,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540243,
+                "image_id": null,
+                "product_id": 231459587,
+                "position": 2,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 1,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23002",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000147829",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:57+0000",
+                "updated_at": "2024-09-16T19:56:57+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991063,
+                        "variant_id": 1018540243,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 1
+                    }
+                ]
+            },
+            {
+                "id": 1018540248,
+                "image_id": null,
+                "product_id": 231459587,
+                "position": 3,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23002",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000147829",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:57+0000",
+                "updated_at": "2024-09-16T19:56:57+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991069,
+                        "variant_id": 1018540248,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540252,
+                "image_id": null,
+                "product_id": 231459587,
+                "position": 4,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23002",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000147829",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:58+0000",
+                "updated_at": "2024-09-16T19:56:58+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991072,
+                        "variant_id": 1018540252,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459595,
+        "name": {
+            "es": "PARKA GLOVES"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "parka-gloves"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/parka-gloves/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:58+0000",
+        "updated_at": "2024-09-16T19:56:58+0000",
+        "variants": [
+            {
+                "id": 1018540271,
+                "image_id": null,
+                "product_id": 231459595,
+                "position": 1,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 1,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23003",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000147874",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:58+0000",
+                "updated_at": "2024-09-16T19:56:58+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991092,
+                        "variant_id": 1018540271,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 1
+                    }
+                ]
+            },
+            {
+                "id": 1018540276,
+                "image_id": null,
+                "product_id": 231459595,
+                "position": 2,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23003",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000147874",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:59+0000",
+                "updated_at": "2024-09-16T19:56:59+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991096,
+                        "variant_id": 1018540276,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540280,
+                "image_id": null,
+                "product_id": 231459595,
+                "position": 3,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23003",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000147874",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:59+0000",
+                "updated_at": "2024-09-16T19:56:59+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991099,
+                        "variant_id": 1018540280,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540281,
+                "image_id": null,
+                "product_id": 231459595,
+                "position": 4,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23003",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000147874",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:56:59+0000",
+                "updated_at": "2024-09-16T19:56:59+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991102,
+                        "variant_id": 1018540281,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459599,
+        "name": {
+            "es": "ACID ROJO GLOVES"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "acid-rojo-gloves"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/acid-rojo-gloves/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:56:59+0000",
+        "updated_at": "2024-09-16T19:56:59+0000",
+        "variants": [
+            {
+                "id": 1018540291,
+                "image_id": null,
+                "product_id": 231459599,
+                "position": 1,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23004",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000147928",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:00+0000",
+                "updated_at": "2024-09-16T19:57:00+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991111,
+                        "variant_id": 1018540291,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540294,
+                "image_id": null,
+                "product_id": 231459599,
+                "position": 2,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 4,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23004",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000147928",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:00+0000",
+                "updated_at": "2024-09-16T19:57:00+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991114,
+                        "variant_id": 1018540294,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 4
+                    }
+                ]
+            },
+            {
+                "id": 1018540296,
+                "image_id": null,
+                "product_id": 231459599,
+                "position": 3,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23004",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000147928",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:00+0000",
+                "updated_at": "2024-09-16T19:57:00+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991117,
+                        "variant_id": 1018540296,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540299,
+                "image_id": null,
+                "product_id": 231459599,
+                "position": 4,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 21,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23004",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000147928",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:00+0000",
+                "updated_at": "2024-09-16T19:57:00+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991119,
+                        "variant_id": 1018540299,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 21
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459606,
+        "name": {
+            "es": "ACID AQUA GLOVES"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "acid-aqua-gloves"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/acid-aqua-gloves/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:01+0000",
+        "updated_at": "2024-09-16T19:57:01+0000",
+        "variants": [
+            {
+                "id": 1018540312,
+                "image_id": null,
+                "product_id": 231459606,
+                "position": 1,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23005",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000147973",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:01+0000",
+                "updated_at": "2024-09-16T19:57:01+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991132,
+                        "variant_id": 1018540312,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540315,
+                "image_id": null,
+                "product_id": 231459606,
+                "position": 2,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23005",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000147973",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:01+0000",
+                "updated_at": "2024-09-16T19:57:01+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991136,
+                        "variant_id": 1018540315,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540319,
+                "image_id": null,
+                "product_id": 231459606,
+                "position": 3,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 3,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23005",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000147973",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:01+0000",
+                "updated_at": "2024-09-16T19:57:01+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991140,
+                        "variant_id": 1018540319,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 3
+                    }
+                ]
+            },
+            {
+                "id": 1018540323,
+                "image_id": null,
+                "product_id": 231459606,
+                "position": 4,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23005",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000147973",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:01+0000",
+                "updated_at": "2024-09-16T19:57:01+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991143,
+                        "variant_id": 1018540323,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459613,
+        "name": {
+            "es": "FELINE GLOVES"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "feline-gloves"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/feline-gloves/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:02+0000",
+        "updated_at": "2024-09-16T19:57:02+0000",
+        "variants": [
+            {
+                "id": 1018540340,
+                "image_id": null,
+                "product_id": 231459613,
+                "position": 1,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 33,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23006",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000148024",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:02+0000",
+                "updated_at": "2024-09-16T19:57:02+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991160,
+                        "variant_id": 1018540340,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 33
+                    }
+                ]
+            },
+            {
+                "id": 1018540347,
+                "image_id": null,
+                "product_id": 231459613,
+                "position": 2,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 23,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23006",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000148024",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:02+0000",
+                "updated_at": "2024-09-16T19:57:02+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991167,
+                        "variant_id": 1018540347,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 23
+                    }
+                ]
+            },
+            {
+                "id": 1018540351,
+                "image_id": null,
+                "product_id": 231459613,
+                "position": 3,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 21,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23006",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000148024",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:02+0000",
+                "updated_at": "2024-09-16T19:57:02+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991171,
+                        "variant_id": 1018540351,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 21
+                    }
+                ]
+            },
+            {
+                "id": 1018540353,
+                "image_id": null,
+                "product_id": 231459613,
+                "position": 4,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23006",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000148024",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:02+0000",
+                "updated_at": "2024-09-16T19:57:02+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991174,
+                        "variant_id": 1018540353,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459620,
+        "name": {
+            "es": "DARK GLOVES"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "dark-gloves"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/dark-gloves/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:03+0000",
+        "updated_at": "2024-09-16T19:57:03+0000",
+        "variants": [
+            {
+                "id": 1018540367,
+                "image_id": null,
+                "product_id": 231459620,
+                "position": 1,
+                "price": "26284.00",
+                "compare_at_price": "26284.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23007",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000148079",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:03+0000",
+                "updated_at": "2024-09-16T19:57:03+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991186,
+                        "variant_id": 1018540367,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540371,
+                "image_id": null,
+                "product_id": 231459620,
+                "position": 2,
+                "price": "26284.00",
+                "compare_at_price": "26284.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23007",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000148079",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:03+0000",
+                "updated_at": "2024-09-16T19:57:03+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991191,
+                        "variant_id": 1018540371,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540375,
+                "image_id": null,
+                "product_id": 231459620,
+                "position": 3,
+                "price": "26284.00",
+                "compare_at_price": "26284.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 1,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23007",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000148079",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:03+0000",
+                "updated_at": "2024-09-16T19:57:03+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991196,
+                        "variant_id": 1018540375,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 1
+                    }
+                ]
+            },
+            {
+                "id": 1018540381,
+                "image_id": null,
+                "product_id": 231459620,
+                "position": 4,
+                "price": "26284.00",
+                "compare_at_price": "26284.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23007",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000148079",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:04+0000",
+                "updated_at": "2024-09-16T19:57:04+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991201,
+                        "variant_id": 1018540381,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459628,
+        "name": {
+            "es": "ATTACK GLOVES"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "attack-gloves"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/attack-gloves/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:04+0000",
+        "updated_at": "2024-09-16T19:57:04+0000",
+        "variants": [
+            {
+                "id": 1018540393,
+                "image_id": null,
+                "product_id": 231459628,
+                "position": 1,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23008",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000148123",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:04+0000",
+                "updated_at": "2024-09-16T19:57:04+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991214,
+                        "variant_id": 1018540393,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540397,
+                "image_id": null,
+                "product_id": 231459628,
+                "position": 2,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23008",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000148123",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:05+0000",
+                "updated_at": "2024-09-16T19:57:05+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991217,
+                        "variant_id": 1018540397,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540401,
+                "image_id": null,
+                "product_id": 231459628,
+                "position": 3,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 4,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23008",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000148123",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:05+0000",
+                "updated_at": "2024-09-16T19:57:05+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991221,
+                        "variant_id": 1018540401,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 4
+                    }
+                ]
+            },
+            {
+                "id": 1018540405,
+                "image_id": null,
+                "product_id": 231459628,
+                "position": 4,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23008",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000148123",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:05+0000",
+                "updated_at": "2024-09-16T19:57:05+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991226,
+                        "variant_id": 1018540405,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459636,
+        "name": {
+            "es": "DELTA GLOVES"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "delta-gloves"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/delta-gloves/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:05+0000",
+        "updated_at": "2024-09-16T19:57:06+0000",
+        "variants": [
+            {
+                "id": 1018540423,
+                "image_id": null,
+                "product_id": 231459636,
+                "position": 1,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23009",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000148178",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:06+0000",
+                "updated_at": "2024-09-16T19:57:06+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991243,
+                        "variant_id": 1018540423,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540426,
+                "image_id": null,
+                "product_id": 231459636,
+                "position": 2,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23009",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000148178",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:06+0000",
+                "updated_at": "2024-09-16T19:57:06+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991247,
+                        "variant_id": 1018540426,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540432,
+                "image_id": null,
+                "product_id": 231459636,
+                "position": 3,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23009",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000148178",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:06+0000",
+                "updated_at": "2024-09-16T19:57:06+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991251,
+                        "variant_id": 1018540432,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540436,
+                "image_id": null,
+                "product_id": 231459636,
+                "position": 4,
+                "price": "14700.00",
+                "compare_at_price": "14700.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "AF23009",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000148178",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:06+0000",
+                "updated_at": "2024-09-16T19:57:06+0000",
+                "cost": "7350.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991256,
+                        "variant_id": 1018540436,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459641,
+        "name": {
+            "es": "EQUIPO FIRE BLACK"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-fire-black"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-fire-black/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:07+0000",
+        "updated_at": "2024-09-16T19:57:07+0000",
+        "variants": [
+            {
+                "id": 1018540451,
+                "image_id": null,
+                "product_id": 231459641,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21001",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000164772",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:07+0000",
+                "updated_at": "2024-09-16T19:57:07+0000",
+                "cost": "25000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991271,
+                        "variant_id": 1018540451,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540459,
+                "image_id": null,
+                "product_id": 231459641,
+                "position": 2,
+                "price": "52000.00",
+                "compare_at_price": "52000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21001",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000164772",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:07+0000",
+                "updated_at": "2024-09-16T19:57:07+0000",
+                "cost": "25000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991278,
+                        "variant_id": 1018540459,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540465,
+                "image_id": null,
+                "product_id": 231459641,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 2,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21001",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000164772",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:07+0000",
+                "updated_at": "2024-09-16T19:57:07+0000",
+                "cost": "25000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991283,
+                        "variant_id": 1018540465,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 2
+                    }
+                ]
+            },
+            {
+                "id": 1018540468,
+                "image_id": null,
+                "product_id": 231459641,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21001",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000164772",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:07+0000",
+                "updated_at": "2024-09-16T19:57:07+0000",
+                "cost": "25000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991288,
+                        "variant_id": 1018540468,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540472,
+                "image_id": null,
+                "product_id": 231459641,
+                "position": 5,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21001",
+                "values": [
+                    {
+                        "es": "XXL"
+                    }
+                ],
+                "barcode": "9000000164772",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:07+0000",
+                "updated_at": "2024-09-16T19:57:07+0000",
+                "cost": "25000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991292,
+                        "variant_id": 1018540472,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459648,
+        "name": {
+            "es": "EQUIPO VAPOR MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-vapor-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-vapor-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:08+0000",
+        "updated_at": "2024-09-16T19:57:08+0000",
+        "variants": [
+            {
+                "id": 1018540486,
+                "image_id": null,
+                "product_id": 231459648,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 1,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21002",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000164826",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:08+0000",
+                "updated_at": "2024-09-16T19:57:08+0000",
+                "cost": "3263.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991307,
+                        "variant_id": 1018540486,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 1
+                    }
+                ]
+            },
+            {
+                "id": 1018540489,
+                "image_id": null,
+                "product_id": 231459648,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 2,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21002",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000164826",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:08+0000",
+                "updated_at": "2024-09-16T19:57:08+0000",
+                "cost": "3263.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991310,
+                        "variant_id": 1018540489,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 2
+                    }
+                ]
+            },
+            {
+                "id": 1018540493,
+                "image_id": null,
+                "product_id": 231459648,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 33,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21002",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000164826",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:09+0000",
+                "updated_at": "2024-09-16T19:57:09+0000",
+                "cost": "3263.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991314,
+                        "variant_id": 1018540493,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 33
+                    }
+                ]
+            },
+            {
+                "id": 1018540496,
+                "image_id": null,
+                "product_id": 231459648,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 3,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21002",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000164826",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:09+0000",
+                "updated_at": "2024-09-16T19:57:09+0000",
+                "cost": "3263.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991317,
+                        "variant_id": 1018540496,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 3
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459652,
+        "name": {
+            "es": "EQUIPO SHOOT MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-shoot-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-shoot-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:09+0000",
+        "updated_at": "2024-09-16T19:57:09+0000",
+        "variants": [
+            {
+                "id": 1018540506,
+                "image_id": null,
+                "product_id": 231459652,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21003",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000164871",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:10+0000",
+                "updated_at": "2024-09-16T19:57:10+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991327,
+                        "variant_id": 1018540506,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540509,
+                "image_id": null,
+                "product_id": 231459652,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21003",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000164871",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:10+0000",
+                "updated_at": "2024-09-16T19:57:10+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991330,
+                        "variant_id": 1018540509,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540514,
+                "image_id": null,
+                "product_id": 231459652,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 37,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21003",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000164871",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:10+0000",
+                "updated_at": "2024-09-16T19:57:10+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991335,
+                        "variant_id": 1018540514,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 37
+                    }
+                ]
+            },
+            {
+                "id": 1018540518,
+                "image_id": null,
+                "product_id": 231459652,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF21003",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000164871",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:10+0000",
+                "updated_at": "2024-09-16T19:57:10+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991339,
+                        "variant_id": 1018540518,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459659,
+        "name": {
+            "es": "EQUIPO ALPHA MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-alpha-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-alpha-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:11+0000",
+        "updated_at": "2024-09-16T19:57:11+0000",
+        "variants": [
+            {
+                "id": 1018540533,
+                "image_id": null,
+                "product_id": 231459659,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22001",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000164925",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:11+0000",
+                "updated_at": "2024-09-16T19:57:11+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991354,
+                        "variant_id": 1018540533,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540538,
+                "image_id": null,
+                "product_id": 231459659,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22001",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000164925",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:11+0000",
+                "updated_at": "2024-09-16T19:57:11+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991358,
+                        "variant_id": 1018540538,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540542,
+                "image_id": null,
+                "product_id": 231459659,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 3,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22001",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000164925",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:12+0000",
+                "updated_at": "2024-09-16T19:57:12+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991362,
+                        "variant_id": 1018540542,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 3
+                    }
+                ]
+            },
+            {
+                "id": 1018540547,
+                "image_id": null,
+                "product_id": 231459659,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22001",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000164925",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:12+0000",
+                "updated_at": "2024-09-16T19:57:12+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991367,
+                        "variant_id": 1018540547,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459667,
+        "name": {
+            "es": "EQUIPO BLOOD MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-blood-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-blood-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:13+0000",
+        "updated_at": "2024-09-16T19:57:13+0000",
+        "variants": [
+            {
+                "id": 1018540554,
+                "image_id": null,
+                "product_id": 231459667,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22004",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000165038",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:13+0000",
+                "updated_at": "2024-09-16T19:57:13+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991374,
+                        "variant_id": 1018540554,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540558,
+                "image_id": null,
+                "product_id": 231459667,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22004",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000165038",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:13+0000",
+                "updated_at": "2024-09-16T19:57:13+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991378,
+                        "variant_id": 1018540558,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540561,
+                "image_id": null,
+                "product_id": 231459667,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 22,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22004",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000165038",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:13+0000",
+                "updated_at": "2024-09-16T19:57:13+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991381,
+                        "variant_id": 1018540561,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 22
+                    }
+                ]
+            },
+            {
+                "id": 1018540562,
+                "image_id": null,
+                "product_id": 231459667,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22004",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000165038",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:13+0000",
+                "updated_at": "2024-09-16T19:57:13+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991383,
+                        "variant_id": 1018540562,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459670,
+        "name": {
+            "es": "EQUIPO COMBAT MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-combat-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-combat-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:14+0000",
+        "updated_at": "2024-09-16T19:57:14+0000",
+        "variants": [
+            {
+                "id": 1018540568,
+                "image_id": null,
+                "product_id": 231459670,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22006",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000165083",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:14+0000",
+                "updated_at": "2024-09-16T19:57:14+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991388,
+                        "variant_id": 1018540568,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540572,
+                "image_id": null,
+                "product_id": 231459670,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22006",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000165083",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:14+0000",
+                "updated_at": "2024-09-16T19:57:14+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991393,
+                        "variant_id": 1018540572,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540574,
+                "image_id": null,
+                "product_id": 231459670,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 18,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22006",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000165083",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:14+0000",
+                "updated_at": "2024-09-16T19:57:14+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991395,
+                        "variant_id": 1018540574,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 18
+                    }
+                ]
+            },
+            {
+                "id": 1018540578,
+                "image_id": null,
+                "product_id": 231459670,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 3,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22006",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000165083",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:15+0000",
+                "updated_at": "2024-09-16T19:57:15+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991399,
+                        "variant_id": 1018540578,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 3
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459678,
+        "name": {
+            "es": "EQUIPO GRAFFITI MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-graffiti-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-graffiti-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:15+0000",
+        "updated_at": "2024-09-16T19:57:15+0000",
+        "variants": [
+            {
+                "id": 1018540589,
+                "image_id": null,
+                "product_id": 231459678,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22007",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000165137",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:15+0000",
+                "updated_at": "2024-09-16T19:57:15+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991410,
+                        "variant_id": 1018540589,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540592,
+                "image_id": null,
+                "product_id": 231459678,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22007",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000165137",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:16+0000",
+                "updated_at": "2024-09-16T19:57:16+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991412,
+                        "variant_id": 1018540592,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540595,
+                "image_id": null,
+                "product_id": 231459678,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 17,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22007",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000165137",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:16+0000",
+                "updated_at": "2024-09-16T19:57:16+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991415,
+                        "variant_id": 1018540595,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 17
+                    }
+                ]
+            },
+            {
+                "id": 1018540597,
+                "image_id": null,
+                "product_id": 231459678,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22007",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000165137",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:16+0000",
+                "updated_at": "2024-09-16T19:57:16+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991418,
+                        "variant_id": 1018540597,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459684,
+        "name": {
+            "es": "EQUIPO PANTHER MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-panther-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-panther-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:17+0000",
+        "updated_at": "2024-09-16T19:57:17+0000",
+        "variants": [
+            {
+                "id": 1018540604,
+                "image_id": null,
+                "product_id": 231459684,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22008",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000165182",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:17+0000",
+                "updated_at": "2024-09-16T19:57:17+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991425,
+                        "variant_id": 1018540604,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540607,
+                "image_id": null,
+                "product_id": 231459684,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22008",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000165182",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:17+0000",
+                "updated_at": "2024-09-16T19:57:17+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991427,
+                        "variant_id": 1018540607,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540611,
+                "image_id": null,
+                "product_id": 231459684,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22008",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000165182",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:17+0000",
+                "updated_at": "2024-09-16T19:57:17+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991432,
+                        "variant_id": 1018540611,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540614,
+                "image_id": null,
+                "product_id": 231459684,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22008",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000165182",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:17+0000",
+                "updated_at": "2024-09-16T19:57:17+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991433,
+                        "variant_id": 1018540614,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459688,
+        "name": {
+            "es": "EQUIPO MUSTARD MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-mustard-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-mustard-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:18+0000",
+        "updated_at": "2024-09-16T19:57:18+0000",
+        "variants": [
+            {
+                "id": 1018540628,
+                "image_id": null,
+                "product_id": 231459688,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 11,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22009",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000165236",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:18+0000",
+                "updated_at": "2024-09-16T19:57:18+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991448,
+                        "variant_id": 1018540628,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 11
+                    }
+                ]
+            },
+            {
+                "id": 1018540634,
+                "image_id": null,
+                "product_id": 231459688,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 14,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22009",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000165236",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:18+0000",
+                "updated_at": "2024-09-16T19:57:18+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991455,
+                        "variant_id": 1018540634,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 14
+                    }
+                ]
+            },
+            {
+                "id": 1018540640,
+                "image_id": null,
+                "product_id": 231459688,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 15,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22009",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000165236",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:18+0000",
+                "updated_at": "2024-09-16T19:57:18+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991460,
+                        "variant_id": 1018540640,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 15
+                    }
+                ]
+            },
+            {
+                "id": 1018540643,
+                "image_id": null,
+                "product_id": 231459688,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22009",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000165236",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:18+0000",
+                "updated_at": "2024-09-16T19:57:18+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991463,
+                        "variant_id": 1018540643,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459697,
+        "name": {
+            "es": "EQUIPO DELTA MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-delta-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-delta-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:19+0000",
+        "updated_at": "2024-09-16T19:57:21+0000",
+        "variants": [
+            {
+                "id": 1018540660,
+                "image_id": null,
+                "product_id": 231459697,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22010",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000165281",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:19+0000",
+                "updated_at": "2024-09-16T19:57:19+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991480,
+                        "variant_id": 1018540660,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540662,
+                "image_id": null,
+                "product_id": 231459697,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22010",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000165281",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:19+0000",
+                "updated_at": "2024-09-16T19:57:19+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991483,
+                        "variant_id": 1018540662,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540665,
+                "image_id": null,
+                "product_id": 231459697,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22010",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000165281",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:19+0000",
+                "updated_at": "2024-09-16T19:57:19+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991485,
+                        "variant_id": 1018540665,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540669,
+                "image_id": null,
+                "product_id": 231459697,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF22010",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000165281",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:19+0000",
+                "updated_at": "2024-09-16T19:57:20+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991489,
+                        "variant_id": 1018540669,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459701,
+        "name": {
+            "es": "EQUIPO ACID ROJO"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-acid-rojo"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-acid-rojo/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:20+0000",
+        "updated_at": "2024-09-16T19:57:20+0000",
+        "variants": [
+            {
+                "id": 1018540679,
+                "image_id": null,
+                "product_id": 231459701,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23001",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000149298",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:20+0000",
+                "updated_at": "2024-09-16T19:57:20+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991498,
+                        "variant_id": 1018540679,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540684,
+                "image_id": null,
+                "product_id": 231459701,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 12,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23001",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000149298",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:20+0000",
+                "updated_at": "2024-09-16T19:57:20+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991503,
+                        "variant_id": 1018540684,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 12
+                    }
+                ]
+            },
+            {
+                "id": 1018540686,
+                "image_id": null,
+                "product_id": 231459701,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 5,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23001",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000149298",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:20+0000",
+                "updated_at": "2024-09-16T19:57:21+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991506,
+                        "variant_id": 1018540686,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 5
+                    }
+                ]
+            },
+            {
+                "id": 1018540688,
+                "image_id": null,
+                "product_id": 231459701,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23001",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000149298",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:21+0000",
+                "updated_at": "2024-09-16T19:57:21+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991509,
+                        "variant_id": 1018540688,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540692,
+                "image_id": null,
+                "product_id": 231459701,
+                "position": 5,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23001",
+                "values": [
+                    {
+                        "es": "XXL"
+                    }
+                ],
+                "barcode": "9000000149298",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:21+0000",
+                "updated_at": "2024-09-16T19:57:21+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991512,
+                        "variant_id": 1018540692,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459706,
+        "name": {
+            "es": "EQUIPO ACID AQUA"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-acid-aqua"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-acid-aqua/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:21+0000",
+        "updated_at": "2024-09-16T19:57:21+0000",
+        "variants": [
+            {
+                "id": 1018540708,
+                "image_id": null,
+                "product_id": 231459706,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 3,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23002",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000149304",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:22+0000",
+                "updated_at": "2024-09-16T19:57:22+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991529,
+                        "variant_id": 1018540708,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 3
+                    }
+                ]
+            },
+            {
+                "id": 1018540711,
+                "image_id": null,
+                "product_id": 231459706,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23002",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000149304",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:22+0000",
+                "updated_at": "2024-09-16T19:57:22+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991531,
+                        "variant_id": 1018540711,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540714,
+                "image_id": null,
+                "product_id": 231459706,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23002",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000149304",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:22+0000",
+                "updated_at": "2024-09-16T19:57:22+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991535,
+                        "variant_id": 1018540714,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540717,
+                "image_id": null,
+                "product_id": 231459706,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23002",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000149304",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:22+0000",
+                "updated_at": "2024-09-16T19:57:22+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991537,
+                        "variant_id": 1018540717,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540720,
+                "image_id": null,
+                "product_id": 231459706,
+                "position": 5,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23002",
+                "values": [
+                    {
+                        "es": "XXL"
+                    }
+                ],
+                "barcode": "9000000149304",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:22+0000",
+                "updated_at": "2024-09-16T19:57:22+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991539,
+                        "variant_id": 1018540720,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459718,
+        "name": {
+            "es": "EQUIPO CREED MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-creed-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-creed-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:23+0000",
+        "updated_at": "2024-09-16T19:57:23+0000",
+        "variants": [
+            {
+                "id": 1018540746,
+                "image_id": null,
+                "product_id": 231459718,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23003",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000149311",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:23+0000",
+                "updated_at": "2024-09-16T19:57:23+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991566,
+                        "variant_id": 1018540746,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540752,
+                "image_id": null,
+                "product_id": 231459718,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23003",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000149311",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:23+0000",
+                "updated_at": "2024-09-16T19:57:23+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991572,
+                        "variant_id": 1018540752,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540757,
+                "image_id": null,
+                "product_id": 231459718,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 5,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23003",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000149311",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:23+0000",
+                "updated_at": "2024-09-16T19:57:23+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991578,
+                        "variant_id": 1018540757,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 5
+                    }
+                ]
+            },
+            {
+                "id": 1018540760,
+                "image_id": null,
+                "product_id": 231459718,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23003",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000149311",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:24+0000",
+                "updated_at": "2024-09-16T19:57:24+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991580,
+                        "variant_id": 1018540760,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540762,
+                "image_id": null,
+                "product_id": 231459718,
+                "position": 5,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23003",
+                "values": [
+                    {
+                        "es": "XXL"
+                    }
+                ],
+                "barcode": "9000000149311",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:24+0000",
+                "updated_at": "2024-09-16T19:57:24+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991583,
+                        "variant_id": 1018540762,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459723,
+        "name": {
+            "es": "EQUIPO FELINE MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-feline-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-feline-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:24+0000",
+        "updated_at": "2024-09-16T19:57:24+0000",
+        "variants": [
+            {
+                "id": 1018540770,
+                "image_id": null,
+                "product_id": 231459723,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 9,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23004",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000149328",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:25+0000",
+                "updated_at": "2024-09-16T19:57:25+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991591,
+                        "variant_id": 1018540770,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 9
+                    }
+                ]
+            },
+            {
+                "id": 1018540774,
+                "image_id": null,
+                "product_id": 231459723,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23004",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000149328",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:25+0000",
+                "updated_at": "2024-09-16T19:57:25+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991594,
+                        "variant_id": 1018540774,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540776,
+                "image_id": null,
+                "product_id": 231459723,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 2,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23004",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000149328",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:25+0000",
+                "updated_at": "2024-09-16T19:57:25+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991596,
+                        "variant_id": 1018540776,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 2
+                    }
+                ]
+            },
+            {
+                "id": 1018540778,
+                "image_id": null,
+                "product_id": 231459723,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23004",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000149328",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:25+0000",
+                "updated_at": "2024-09-16T19:57:25+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991598,
+                        "variant_id": 1018540778,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540781,
+                "image_id": null,
+                "product_id": 231459723,
+                "position": 5,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23004",
+                "values": [
+                    {
+                        "es": "XXL"
+                    }
+                ],
+                "barcode": "9000000149328",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:25+0000",
+                "updated_at": "2024-09-16T19:57:25+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991602,
+                        "variant_id": 1018540781,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    },
+    {
+        "id": 231459732,
+        "name": {
+            "es": "EQUIPO FLAME MX"
+        },
+        "description": {
+            "es": ""
+        },
+        "handle": {
+            "es": "equipo-flame-mx"
+        },
+        "attributes": [
+            {
+                "es": "Talle"
+            }
+        ],
+        "published": true,
+        "free_shipping": false,
+        "requires_shipping": true,
+        "canonical_url": "https://test1152.mitiendanube.com/productos/equipo-flame-mx/",
+        "video_url": null,
+        "seo_title": {
+            "es": ""
+        },
+        "seo_description": {
+            "es": ""
+        },
+        "brand": null,
+        "created_at": "2024-09-16T19:57:26+0000",
+        "updated_at": "2024-09-16T19:57:26+0000",
+        "variants": [
+            {
+                "id": 1018540798,
+                "image_id": null,
+                "product_id": 231459732,
+                "position": 1,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23005",
+                "values": [
+                    {
+                        "es": "L"
+                    }
+                ],
+                "barcode": "9000000149335",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:26+0000",
+                "updated_at": "2024-09-16T19:57:26+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991618,
+                        "variant_id": 1018540798,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540803,
+                "image_id": null,
+                "product_id": 231459732,
+                "position": 2,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23005",
+                "values": [
+                    {
+                        "es": "M"
+                    }
+                ],
+                "barcode": "9000000149335",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:26+0000",
+                "updated_at": "2024-09-16T19:57:26+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991623,
+                        "variant_id": 1018540803,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540808,
+                "image_id": null,
+                "product_id": 231459732,
+                "position": 3,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 1,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23005",
+                "values": [
+                    {
+                        "es": "S"
+                    }
+                ],
+                "barcode": "9000000149335",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:26+0000",
+                "updated_at": "2024-09-16T19:57:26+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991628,
+                        "variant_id": 1018540808,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 1
+                    }
+                ]
+            },
+            {
+                "id": 1018540811,
+                "image_id": null,
+                "product_id": 231459732,
+                "position": 4,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23005",
+                "values": [
+                    {
+                        "es": "XL"
+                    }
+                ],
+                "barcode": "9000000149335",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:26+0000",
+                "updated_at": "2024-09-16T19:57:26+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991632,
+                        "variant_id": 1018540811,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            },
+            {
+                "id": 1018540815,
+                "image_id": null,
+                "product_id": 231459732,
+                "position": 5,
+                "price": "62000.00",
+                "compare_at_price": "62000.00",
+                "promotional_price": null,
+                "stock_management": true,
+                "stock": 0,
+                "weight": "0.000",
+                "width": "0.00",
+                "height": "0.00",
+                "depth": "0.00",
+                "sku": "EQF23005",
+                "values": [
+                    {
+                        "es": "XXL"
+                    }
+                ],
+                "barcode": "9000000149335",
+                "mpn": null,
+                "age_group": null,
+                "gender": null,
+                "created_at": "2024-09-16T19:57:27+0000",
+                "updated_at": "2024-09-16T19:57:27+0000",
+                "cost": "31000.00",
+                "inventory_levels": [
+                    {
+                        "id": 645991636,
+                        "variant_id": 1018540815,
+                        "location_id": "01HEB9TE82ECXN33YT79HK6BZV",
+                        "stock": 0
+                    }
+                ]
+            }
+        ],
+        "tags": "",
+        "images": [],
+        "categories": []
+    }
+]

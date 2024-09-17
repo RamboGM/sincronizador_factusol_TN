@@ -1,3 +1,4 @@
+# main.py
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter import ttk
@@ -28,7 +29,6 @@ def configurar_icono(root):
     else:
         logging.warning("El archivo de icono no se encontró en la ruta especificada.")
 
-# Cargar variables de entorno desde el archivo .env
 dotenv_path = os.path.join(obtener_ruta_base(), 'scripts', '.env')
 load_dotenv(dotenv_path)
 
@@ -36,33 +36,27 @@ if not os.path.exists(dotenv_path):
     logging.error(f"No se encontró el archivo .env en: {dotenv_path}")
 if not os.path.exists(config_path):
     logging.error(f"No se encontró el archivo config.txt en: {config_path}")
-    
-# Scheduler
-scheduler = BackgroundScheduler()
 
-# Inicializar log_text como global
+scheduler = BackgroundScheduler()
 log_text = None
 running_thread = None
-stop_event = threading.Event()  # Evento para detener el hilo
+stop_event = threading.Event()
 
-# Definir variables globales para limpiar al cierre
 global productos_creados, productos_actualizados, productos_eliminados
 productos_creados = 0
 productos_actualizados = 0
 productos_eliminados = 0
 
 def limpiar_estado():
-    """Función para limpiar variables globales y cerrar conexiones."""
     global productos_creados, productos_actualizados, productos_eliminados
     productos_creados = 0
     productos_actualizados = 0
     productos_eliminados = 0
     if scheduler.running:
-        scheduler.shutdown()  # Detener el scheduler si está activo
+        scheduler.shutdown()
     if running_thread and running_thread.is_alive():
-        stop_event.set()  # Detener el hilo si sigue activo
+        stop_event.set()
 
-# Manejador personalizado de logging para redirigir la salida a la interfaz
 class TextHandler(logging.Handler):
     def __init__(self, text_widget):
         super().__init__()
@@ -119,7 +113,6 @@ class TextHandler(logging.Handler):
 def leer_configuracion():
     config = configparser.ConfigParser()
 
-    # Verificar si el archivo tiene una sección válida, sino, inicializarlo
     if not os.path.exists(config_path) or '[DEFAULT]' not in open(config_path).read():
         with open(config_path, 'w') as config_file:
             config_file.write('[DEFAULT]\n')
@@ -141,26 +134,20 @@ def obtener_hora_sincronizacion_guardada():
     return config['DEFAULT'].get('hora_sincronizacion', '')
 
 def main():
-    # Configurar logging
     global log_text
     logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
-    # Leer la hora de sincronización guardada
     hora_guardada = obtener_hora_sincronizacion_guardada()
 
-    # Crear la interfaz gráfica
     root = tk.Tk()
     root.title("Sincronizador Tienda Nube")
     configurar_icono(root)
 
-    # Configurar la fuente Montserrat
-    montserrat = ("Montserrat", 9)  # Fuente más reducida para adaptarse mejor a pantallas pequeñas
-
+    montserrat = ("Montserrat", 9)
     title_font = ("Montserrat", 14, "bold")
     title_label = tk.Label(root, text="Sincronizador Factusol | Tienda Nube", font=title_font, fg="#01304f")
     title_label.grid(row=0, column=0, pady=10, columnspan=3)
 
-    # Variables para almacenar las rutas de los archivos seleccionados
     db_path = tk.StringVar(value="")
     csv_path = tk.StringVar(value="")
 
@@ -259,8 +246,8 @@ def main():
         scheduler.remove_all_jobs()
         log("Sincronización automática cancelada.")
 
-    root.minsize(700, 500)  # Tamaño mínimo ajustado
-    root.geometry("750x550")  # Tamaño inicial más compacto
+    root.minsize(700, 500)
+    root.geometry("750x550")
 
     main_frame = ttk.Frame(root, padding="10")
     main_frame.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
@@ -358,7 +345,6 @@ def main():
     style.configure('TButton', font=montserrat, padding=5, relief="flat")
     style.map('TButton', foreground=[('pressed', 'white'), ('active', '#01304f')], background=[('pressed', '#007ACC'), ('active', '#007ACC')])
 
-    # Vincular la limpieza de estado al cerrar la aplicación
     root.protocol("WM_DELETE_WINDOW", lambda: (limpiar_estado(), root.destroy()))
 
     root.mainloop()
