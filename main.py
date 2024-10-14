@@ -1,6 +1,5 @@
-# main.py
 import tkinter as tk
-from tkinter import filedialog, messagebox
+from tkinter import filedialog, messagebox, Toplevel
 from tkinter import ttk
 import threading
 import os
@@ -28,6 +27,16 @@ def configurar_icono(root):
         root.iconbitmap(icono_path)
     else:
         logging.warning("El archivo de icono no se encontró en la ruta especificada.")
+
+def mostrar_info(titulo, mensaje):
+    top = Toplevel()
+    top.title(titulo)
+    top.geometry("300x150")
+    top.resizable(False, False)
+    label = ttk.Label(top, text=mensaje, wraplength=280, justify="left")
+    label.pack(pady=10, padx=10)
+    cerrar_boton = ttk.Button(top, text="Cerrar", command=top.destroy)
+    cerrar_boton.pack(pady=10)
 
 dotenv_path = os.path.join(obtener_ruta_base(), 'scripts', '.env')
 load_dotenv(dotenv_path)
@@ -113,44 +122,90 @@ class TextHandler(logging.Handler):
 def leer_configuracion():
     config = configparser.ConfigParser()
 
-    if not os.path.exists(config_path) or '[DEFAULT]' not in open(config_path).read():
+    # Verificar si el archivo de configuración existe
+    if not os.path.exists(config_path):
+        # Crear el archivo con valores por defecto si no existe
         with open(config_path, 'w') as config_file:
-            config_file.write('[DEFAULT]\n')
-            config_file.write('db_path=\n')
-            config_file.write('csv_path=\n')
-            config_file.write('hora_sincronizacion=\n')
+            config['DEFAULT'] = {
+                'db_path': '',
+                'csv_path': '',
+                'hora_sincronizacion': '',
+                'gestionar_precio': 'False',
+                'gestionar_stock': 'False',
+                'crear_productos': 'False',
+                'ocultar_no_existentes': 'False'
+            }
+            config.write(config_file)
 
     config.read(config_path)
     return config
 
-def guardar_hora_sincronizacion(hora):
+def guardar_configuracion(db_path, csv_path, gestionar_precio, gestionar_stock, crear_productos, ocultar_no_existentes, hora_sincronizacion):
     config = leer_configuracion()
-    config['DEFAULT']['hora_sincronizacion'] = hora
-    with open(config_path, 'w') as config_file:
-        config.write(config_file)
+
+    # Guardar todas las configuraciones como cadenas de texto
+    config['DEFAULT'] = {
+        'db_path': db_path.get(),
+        'csv_path': csv_path.get(),
+        'hora_sincronizacion': hora_sincronizacion.get(),
+        'gestionar_precio': str(gestionar_precio.get()),
+        'gestionar_stock': str(gestionar_stock.get()),
+        'crear_productos': str(crear_productos.get()),
+        'ocultar_no_existentes': str(ocultar_no_existentes.get())
+    }
+
+    with open(config_path, 'w') as configfile:
+        config.write(configfile)
+
+    logging.info("Configuración guardada correctamente.")
+
+def inicializar_configuracion(db_path, csv_path, gestionar_precio, gestionar_stock, crear_productos, ocultar_no_existentes, hora_sincronizacion):
+    config = leer_configuracion()
+
+    # Cargar configuraciones y asignarlas a las variables
+    db_path.set(config['DEFAULT'].get('db_path', ''))
+    csv_path.set(config['DEFAULT'].get('csv_path', ''))
+    hora_sincronizacion.set(config['DEFAULT'].get('hora_sincronizacion', ''))
+    gestionar_precio.set(config['DEFAULT'].getboolean('gestionar_precio', False))
+    gestionar_stock.set(config['DEFAULT'].getboolean('gestionar_stock', False))
+    crear_productos.set(config['DEFAULT'].getboolean('crear_productos', False))
+    ocultar_no_existentes.set(config['DEFAULT'].getboolean('ocultar_no_existentes', False))
+
+    logging.info("Configuración cargada desde el archivo.")
 
 def obtener_hora_sincronizacion_guardada():
-    config = leer_configuracion()
+    config = leer_configuracion()  # Asumimos que leer_configuracion está correctamente definida
     return config['DEFAULT'].get('hora_sincronizacion', '')
 
 def main():
     global log_text
     logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
-    hora_guardada = obtener_hora_sincronizacion_guardada()
-
+    # Crear la ventana principal
     root = tk.Tk()
     root.title("Sincronizador Tienda Nube")
     configurar_icono(root)
 
+    root.state("zoomed")
+
     montserrat = ("Montserrat", 9)
     title_font = ("Montserrat", 14, "bold")
     title_label = tk.Label(root, text="Sincronizador Factusol | Tienda Nube", font=title_font, fg="#01304f")
-    title_label.grid(row=0, column=0, pady=10, columnspan=3)
+    title_label.grid(row=0, column=0, pady=10, columnspan=4)
 
+    # Declaración de variables
     db_path = tk.StringVar(value="")
     csv_path = tk.StringVar(value="")
+    hora_sincronizacion = tk.StringVar(value="")
+    gestionar_precio = tk.BooleanVar(value=False)
+    gestionar_stock = tk.BooleanVar(value=False)
+    crear_productos = tk.BooleanVar(value=False)
+    ocultar_no_existentes = tk.BooleanVar(value=False)
 
+    # Inicializar la configuración desde el archivo
+    inicializar_configuracion(db_path, csv_path, gestionar_precio, gestionar_stock, crear_productos, ocultar_no_existentes, hora_sincronizacion)
+
+    # Funciones para seleccionar archivos y directorios
     def seleccionar_db():
         path = filedialog.askopenfilename(
             title="Seleccionar archivo de base de datos de Factusol",
@@ -164,26 +219,18 @@ def main():
         if path:
             csv_path.set(path)
 
-    def guardar_configuracion():
-        config = leer_configuracion()
-        config['DEFAULT']['db_path'] = db_path.get()
-        config['DEFAULT']['csv_path'] = csv_path.get()
-        with open(config_path, 'w') as config_file:
-            config.write(config_file)
-        log("Configuración guardada correctamente.")
-
     def sincronizacion_manual():
         global running_thread
         try:
-            log("Iniciando sincronización manual...")
+            logging.info("Iniciando sincronización manual...")
             if stop_event.is_set():
-                log("Sincronización cancelada antes de comenzar.")
+                logging.info("Sincronización cancelada antes de comenzar.")
                 return
 
             exportar_a_csv(db_path.get(), csv_path.get(), send_to_gui=log)
 
             if stop_event.is_set():
-                log("Sincronización cancelada después de exportar CSV.")
+                logging.info("Sincronización cancelada después de exportar CSV.")
                 return
 
             csv_files = [
@@ -196,12 +243,20 @@ def main():
             ]
 
             productos_nuevos = procesar_csv_a_json(csv_files)
-            
+
             # Pasar los valores de los checkboxes a la función de sincronización
-            sincronizar_productos(productos_nuevos, log_func=log, stop_event=stop_event, gestionar_precio=gestionar_precio.get(), gestionar_stock=gestionar_stock.get())
+            sincronizar_productos(
+                productos_nuevos,
+                log_func=log,
+                stop_event=stop_event,
+                gestionar_precio=gestionar_precio.get(),
+                gestionar_stock=gestionar_stock.get(),
+                crear_productos=crear_productos.get(),
+                ocultar_no_existentes=ocultar_no_existentes.get()
+            )
 
         except Exception as e:
-            log(f"Error en sincronización manual: {e}")
+            logging.info(f"Error en sincronización manual: {e}")
         finally:
             running_thread = None
             stop_event.clear()
@@ -234,7 +289,6 @@ def main():
         hora = hora_sincronizacion.get()
         if hora:
             try:
-                guardar_hora_sincronizacion(hora)
                 hh, mm = hora.split(":")
                 scheduler.add_job(sincronizacion_manual, CronTrigger(hour=hh, minute=mm))
                 scheduler.start()
@@ -248,8 +302,7 @@ def main():
         scheduler.remove_all_jobs()
         log("Sincronización automática cancelada.")
 
-    root.minsize(700, 500)
-    root.geometry("750x550")
+    root.minsize(800, 1000)
 
     main_frame = ttk.Frame(root, padding="10")
     main_frame.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
@@ -272,51 +325,67 @@ def main():
     csv_label = ttk.Label(csv_label_frame, textvariable=csv_path, font=montserrat, background="white", relief="solid", padding=5, anchor='w')
     csv_label.grid(row=0, column=0, sticky="ew")
 
-    save_button = ttk.Button(main_frame, text="Guardar Configuración", command=guardar_configuracion, style='TButton')
+    save_button = ttk.Button(main_frame, text="Guardar Configuración", 
+                         command=lambda: guardar_configuracion(db_path, csv_path, gestionar_precio, gestionar_stock, crear_productos, ocultar_no_existentes, hora_sincronizacion))
     save_button.grid(row=3, column=0, columnspan=2, pady=5, sticky="ew")
 
-    # Personalizar el botón de "Sincronizar Ahora"
-    style = ttk.Style()
-
-    # Estilo del botón con fondo azul y texto blanco en negrita
-    style.configure('Custom.TButton',
-                    font=("Montserrat", 10, "bold"),
-                    background='white',   # Color de fondo
-                    foreground='black')     # Color del texto
-
-    style.map('Custom.TButton', 
-            foreground=[('pressed', 'white'), ('active', 'white')],
-            background=[('pressed', '#002a6b'), ('active', '#00358e')])
-
-    sync_button = ttk.Button(main_frame, text="Sincronizar Ahora", command=iniciar_sincronizacion, style='Custom.TButton')
-    sync_button.grid(row=4, column=0, pady=5, columnspan=2, sticky="ew")
-
-
-    cancel_button = ttk.Button(main_frame, text="Cancelar", command=cancelar_sincronizacion, style='TButton')
-    cancel_button.grid(row=5, column=0, pady=5, columnspan=2, sticky="ew")
 
     # Añadir el texto antes de los checkboxes
-    ttk.Label(main_frame, text="Por favor, seleccione que desea sincronizar (Sincroniza ambos por defecto):", font=("Montserrat", 9, "bold")).grid(row=6, column=0, columnspan=2, pady=(10, 0), sticky="ew")
+    ttk.Label(main_frame, text="Por favor, seleccione que tareas desea realizar:", font=("Montserrat", 9, "bold")).grid(row=4, column=0, columnspan=2, pady=(10, 0), sticky="ew")
 
-    # Variables para los checkboxes de gestión de precio y stock
+    # Variables para los checkboxes de gestión de precio, stock, creación de productos y ocultación de productos
     gestionar_precio = tk.BooleanVar(value=True)
     gestionar_stock = tk.BooleanVar(value=True)
+    crear_productos = tk.BooleanVar(value=True)
+    ocultar_no_existentes = tk.BooleanVar(value=False)
 
-    # Crear un frame para los checkboxes y colocarlos juntos
+    # Creación de la Sección de Checkboxes
     checkbox_frame = ttk.Frame(main_frame)
-    checkbox_frame.grid(row=7, column=0, columnspan=2, pady=(5, 10), sticky="ew")
+    checkbox_frame.grid(row=5, column=0, columnspan=2, pady=5, sticky="ew")
 
-    # Colocar los checkboxes en el mismo frame para acercarlos
-    check_precio = tk.Checkbutton(checkbox_frame, text="Gestionar Precio", variable=gestionar_precio)
-    check_precio.grid(row=0, column=0, padx=10, sticky="w")
+    # Colocar los checkboxes con íconos de pregunta pequeños
+    ttk.Label(checkbox_frame, text="Sincronizar Precio").grid(row=0, column=0, padx=10, pady=5, sticky="w")
+    ttk.Checkbutton(checkbox_frame, text="Sí", variable=gestionar_precio).grid(row=1, column=0, sticky="w")
+    ttk.Checkbutton(checkbox_frame, text="No", variable=gestionar_precio, onvalue=False).grid(row=2, column=0, sticky="w")
+    question_button_precio = ttk.Label(checkbox_frame, text="?", foreground="blue", cursor="hand2", font=("Arial", 10, "bold"))
+    question_button_precio.grid(row=0, column=1, sticky="w")
+    question_button_precio.bind("<Button-1>", lambda e: mostrar_info("Sincronizar Precio", "Si selecciona 'Sí', los precios de los productos se sincronizarán con Factusol."))
 
-    check_stock = tk.Checkbutton(checkbox_frame, text="Gestionar Stock", variable=gestionar_stock)
-    check_stock.grid(row=0, column=1, padx=10, sticky="w")
+    ttk.Label(checkbox_frame, text="Sincronizar Stock").grid(row=0, column=2, padx=10, pady=5, sticky="w")
+    ttk.Checkbutton(checkbox_frame, text="Sí", variable=gestionar_stock).grid(row=1, column=2, sticky="w")
+    ttk.Checkbutton(checkbox_frame, text="No", variable=gestionar_stock, onvalue=False).grid(row=2, column=2, sticky="w")
+    question_button_stock = ttk.Label(checkbox_frame, text="?", foreground="blue", cursor="hand2", font=("Arial", 10, "bold"))
+    question_button_stock.grid(row=0, column=3, sticky="w")
+    question_button_stock.bind("<Button-1>", lambda e: mostrar_info("Sincronizar Stock", "Si selecciona 'Sí', el stock de los productos se sincronizará con Factusol."))
 
-    ttk.Label(main_frame, text="Configuración de sincronización automática", font=("Montserrat", 11, "bold")).grid(row=8, column=0, columnspan=2, pady=10, sticky="ew")
+    ttk.Label(checkbox_frame, text="Crear Productos").grid(row=0, column=4, padx=10, pady=5, sticky="w")
+    ttk.Checkbutton(checkbox_frame, text="Sí", variable=crear_productos).grid(row=1, column=4, sticky="w")
+    ttk.Checkbutton(checkbox_frame, text="No", variable=crear_productos, onvalue=False).grid(row=2, column=4, sticky="w")
+    question_button_crear = ttk.Label(checkbox_frame, text="?", foreground="blue", cursor="hand2", font=("Arial", 10, "bold"))
+    question_button_crear.grid(row=0, column=5, sticky="w")
+    question_button_crear.bind("<Button-1>", lambda e: mostrar_info("Crear Productos", "Si selecciona 'Sí', los productos que existan en Factusol pero no en Tienda Nube serán creados."))
+
+    ttk.Label(checkbox_frame, text="Ocultar Productos no Existentes").grid(row=0, column=6, padx=10, pady=5, sticky="w")
+    ttk.Checkbutton(checkbox_frame, text="Sí", variable=ocultar_no_existentes).grid(row=1, column=6, sticky="w")
+    ttk.Checkbutton(checkbox_frame, text="No", variable=ocultar_no_existentes, onvalue=False).grid(row=2, column=6, sticky="w")
+    question_button_ocultar = ttk.Label(checkbox_frame, text="?", foreground="blue", cursor="hand2", font=("Arial", 10, "bold"))
+    question_button_ocultar.grid(row=0, column=7, sticky="w")
+    question_button_ocultar.bind("<Button-1>", lambda e: mostrar_info("Ocultar Productos no Existentes", "Si selecciona 'Sí', los productos que no se encuentren en Factusol serán ocultados en la tienda."))
+
+    # Botón para sincronización manual
+    sync_button = ttk.Button(main_frame, text="Sincronizar Ahora", command=iniciar_sincronizacion, style='Custom.TButton')
+    sync_button.grid(row=6, column=0, pady=5, padx=10, sticky="ew")  # Colocado justo después de los checkboxes
+
+    # Botón para cancelar la sincronización
+    cancel_button = ttk.Button(main_frame, text="Cancelar", command=cancelar_sincronizacion, style='TButton')
+    cancel_button.grid(row=6, column=1, pady=5, padx=10, sticky="ew")  # Al lado del botón de sincronización manual
 
     hora_frame = ttk.Frame(main_frame)
-    hora_frame.grid(row=9, column=0, columnspan=2, pady=5, sticky="ew")
+    hora_frame.grid(row=8, column=0, columnspan=2, pady=5, sticky="ew")
+
+    hora_guardada = obtener_hora_sincronizacion_guardada()
+
+    ttk.Label(main_frame, text="Sincronización Automática", font=("Montserrat", 10, "bold")).grid(row=7, column=0, columnspan=2, pady=(10, 5), sticky="ew")
 
     ttk.Label(hora_frame, text="Hora de sincronización (HH:MM):", font=montserrat).grid(row=0, column=0, pady=5, padx=(0, 10), sticky=tk.E)
     hora_sincronizacion = tk.StringVar(value=hora_guardada)
@@ -324,13 +393,13 @@ def main():
     hora_entry.grid(row=0, column=1, pady=5, sticky=tk.W)
 
     activar_sync_button = ttk.Button(main_frame, text="Activar Sincronización", command=activar_sincronizacion_automatica, style='TButton')
-    activar_sync_button.grid(row=10, column=0, pady=5, sticky="ew")
+    activar_sync_button.grid(row=9, column=0, pady=5, sticky="ew")
 
     cancelar_sync_button = ttk.Button(main_frame, text="Cancelar Sincronización", command=cancelar_sincronizacion_automatica, style='TButton')
-    cancelar_sync_button.grid(row=10, column=1, pady=5, sticky="ew")
+    cancelar_sync_button.grid(row=9, column=1, pady=5, sticky="ew")
 
     log_frame = ttk.Frame(main_frame)
-    log_frame.grid(row=11, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
+    log_frame.grid(row=10, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
 
     log_scrollbar = tk.Scrollbar(log_frame, orient=tk.VERTICAL)
     log_text = tk.Text(log_frame, wrap='word', font=montserrat, borderwidth=2, relief="solid", yscrollcommand=log_scrollbar.set)
@@ -339,9 +408,9 @@ def main():
     log_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
     buscar_frame = ttk.Frame(root)
-    buscar_frame.grid(row=12, column=0, pady=5, sticky=tk.EW)
+    buscar_frame.grid(row=11, column=0, pady=5, sticky=tk.EW)
 
-    ttk.Label(buscar_frame, text="Buscar SKU o palabra:", font=montserrat).grid(row=0, column=0, padx=(10, 5))
+    ttk.Label(buscar_frame, text="Buscar SKU o palabra clave:", font=montserrat).grid(row=0, column=0, padx=(10, 5))
 
     buscar_entry = ttk.Entry(buscar_frame, font=montserrat)
     buscar_entry.grid(row=0, column=1, padx=(0, 10))
@@ -366,7 +435,7 @@ def main():
         webbrowser.open_new("https://tiendapocket.com/")
 
     footer = tk.Label(root, text="Desarrollado por Tienda Pocket", font=("Montserrat", 9), fg="blue", cursor="hand2")
-    footer.grid(row=13, column=0, pady=5)
+    footer.grid(row=11, column=0, pady=5)
     footer.bind("<Button-1>", abrir_enlace)
 
     root.grid_rowconfigure(1, weight=1)
@@ -385,4 +454,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

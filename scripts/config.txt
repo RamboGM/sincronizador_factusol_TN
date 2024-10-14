@@ -1,5 +1,9 @@
 [DEFAULT]
-db_path = C:/Users/Windows/Desktop/CSV/9992024.accdb
-csv_path = C:/Users/Windows/Desktop/CSV
-hora_sincronizacion = 12:37
+db_path =
+csv_path =
+hora_sincronizacion =
+gestionar_precio = True
+gestionar_stock = True
+crear_productos = False
+ocultar_no_existentes = False
 
