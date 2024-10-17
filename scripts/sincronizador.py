@@ -177,13 +177,8 @@ def variantes_iguales(var_existente, var_nuevo):
     )
 
 def productos_iguales(prod_existente, prod_nuevo):
-    nombre_existente = " ".join(prod_existente.get("name", {}).get("es", "").split()).lower()
-    nombre_nuevo = " ".join(prod_nuevo.get("name", {}).get("es", "").split()).lower()
-
-    if nombre_existente != nombre_nuevo:
-        logging.debug(f"Diferencia en nombre: '{nombre_existente}' vs '{nombre_nuevo}'")
-        return False
-
+    # Removemos la comparación de los nombres de productos.
+    
     variantes_existente = prod_existente.get("variants", [])
     variantes_nuevo = prod_nuevo.get("variants", [])
 
@@ -201,13 +196,17 @@ def productos_iguales(prod_existente, prod_nuevo):
             logging.debug(f"No se encontró coincidencia para la variante: {var_nuevo}")
             return False
 
-    logging.debug(f"Producto {nombre_nuevo} es igual al existente.")
     return True
+
 
 def actualizar_producto(producto_id, producto_data, variantes_existentes, gestionar_precio=True, gestionar_stock=True):
     global productos_actualizados
 
     headers = obtener_headers()
+
+    # Removemos el nombre del producto de los datos a actualizar.
+    if "name" in producto_data:
+        del producto_data["name"]
 
     # Crear una copia del producto_data, solo trabajaremos con las variantes
     producto_data_sin_variantes = {
@@ -250,6 +249,7 @@ def actualizar_producto(producto_id, producto_data, variantes_existentes, gestio
                 logging.error(f"Error al actualizar variante {variante_id}: {response_variante.status_code} {response_variante.text}")
         else:
             logging.warning(f"No se encontró el ID de la variante para el producto {producto_id}. Saltando la actualización de esta variante.")
+
 
 def actualizar_variantes(producto_id, variantes_nuevas):
     headers = obtener_headers()
@@ -468,12 +468,38 @@ def ocultar_producto(producto_id):
 
     if response.status_code == 200:
         logging.info(f"Producto {producto_id} ocultado correctamente.")
-        productos_ocultados += 1  # Incrementamos el contador correcto
     else:
         logging.error(f"Error al ocultar producto {producto_id}: {response.status_code} {response.text}")
 
-def sincronizar_productos(productos_nuevos, log_func=None, stop_event=None, gestionar_precio=True, gestionar_stock=True, crear_productos=True, ocultar_no_existentes=False):
+def detectar_duplicados_sku(productos):
+    """Detectar productos en Tienda Nube con el mismo SKU, excluyendo productos variables."""
+    skus_vistos = {}
+    duplicados = []
 
+    # Recorrer todos los productos
+    for producto in productos:
+        sku = producto.get('sku')
+        nombre = producto.get('name')
+
+        # Excluir productos con variantes
+        if 'variants' in producto and len(producto['variants']) > 1:
+            logging.info(f"Producto {nombre} con SKU {sku} es un producto variable, excluido de la verificación de duplicados.")
+            continue
+
+        if sku in skus_vistos:
+            # Si el SKU ya fue visto, lo añadimos a la lista de duplicados
+            duplicados.append({
+                'sku': sku,
+                'nombre': nombre,
+                'nombre_duplicado': skus_vistos[sku]
+            })
+        else:
+            # Si es la primera vez que vemos este SKU, lo registramos
+            skus_vistos[sku] = nombre
+
+    return duplicados
+
+def sincronizar_productos(productos_nuevos, log_func, stop_event, gestionar_precio, gestionar_stock, crear_productos, accion_no_existentes):
     global productos_creados, productos_actualizados, productos_eliminados, productos_ocultados
     productos_creados = 0
     productos_actualizados = 0
@@ -482,7 +508,25 @@ def sincronizar_productos(productos_nuevos, log_func=None, stop_event=None, gest
 
     productos_existentes = obtener_productos_existentes()
 
-    productos_existentes_dict = {normalizar_sku(variant.get("sku")): prod for prod in productos_existentes for variant in prod.get("variants", [])}
+    # Diccionario para verificar duplicados por SKU en los productos de Tienda Nube
+    productos_existentes_dict = {}
+    productos_duplicados = {}
+
+    # Verificar SKU duplicados en productos existentes (sin incluir productos con variaciones)
+    for prod in productos_existentes:
+        # Si el producto tiene variaciones, lo excluimos del chequeo de SKU duplicados
+        if "variants" in prod and len(prod["variants"]) > 1:
+            continue  # Ignoramos productos con variaciones en este chequeo
+
+        for variant in prod.get("variants", []):
+            sku = normalizar_sku(variant.get("sku"))
+            if sku in productos_existentes_dict:
+                # Si ya existe el SKU, lo agregamos a productos duplicados
+                productos_duplicados[sku] = productos_duplicados.get(sku, []) + [prod]
+            else:
+                productos_existentes_dict[sku] = prod
+
+    # Crear un diccionario para los nuevos productos
     productos_nuevos_dict = {normalizar_sku(prod.get("sku")): prod for prod in productos_nuevos}
 
     total_productos_procesados = 0
@@ -500,6 +544,18 @@ def sincronizar_productos(productos_nuevos, log_func=None, stop_event=None, gest
             log_func(f"Producto sin SKU, ignorado.")
             continue
 
+        # Verificación de productos duplicados solo en productos sin variaciones
+        if sku in productos_duplicados:
+            # Alerta destacada en el log
+            log_func(f"\n**ALERTA CRÍTICA**: Se detectaron múltiples productos en Tienda Nube con el mismo SKU '{sku}'. No se realizará ninguna acción hasta que se corrija este error.\n")
+            
+            for producto in productos_duplicados[sku]:
+                log_func(f"Producto duplicado con ID {producto['id']} y nombre '{producto.get('name', {}).get('es', 'Sin nombre')}'")
+
+            # Omitir la sincronización de este producto hasta que se resuelva el problema
+            continue
+
+        # Verificar si el producto ya existe
         producto_existente = productos_existentes_dict.get(sku)
 
         if producto_existente:
@@ -531,7 +587,7 @@ def sincronizar_productos(productos_nuevos, log_func=None, stop_event=None, gest
                 continue  # Si ya está oculto, no hacemos nada
 
             # Si no está oculto y la opción es ocultar, lo ocultamos
-            if ocultar_no_existentes:
+            if accion_no_existentes == "Ocultar":
                 log_func(f"Ocultando producto con SKU: {sku} que ya no está en la base de datos.")
                 ocultar_producto(producto_existente["id"])  # Oculta el producto
                 productos_ocultados += 1  # Solo incrementa productos ocultados
@@ -546,10 +602,17 @@ def sincronizar_productos(productos_nuevos, log_func=None, stop_event=None, gest
     log_func(f"Productos actualizados: {productos_actualizados}")
     log_func(f"Productos eliminados: {productos_eliminados}")
     log_func(f"Productos ocultados en tienda: {productos_ocultados}")
+    log_func(f"Productos con SKUs duplicados en Tienda Nube: {len(productos_duplicados)}")
     log_func(f"Total productos procesados: {total_productos_procesados}")
     log_func(f"---------------------------------\n")
 
     log_func("Sincronización manual completada.")
+
+
+
+
+
+
 
 
 

@@ -1,9 +1,9 @@
 [DEFAULT]
 db_path =
-csv_path =
-hora_sincronizacion =
-gestionar_precio = True
-gestionar_stock = True
+csv_path = 
+hora_sincronizacion = 
+gestionar_precio = False
+gestionar_stock = False
 crear_productos = False
-ocultar_no_existentes = False
+accion_no_existentes = Ocultar
 
